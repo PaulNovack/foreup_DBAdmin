@@ -1,0 +1,91 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 488
+  HorizontalOffset = 2772
+  VerticalOffset = 580
+  Width = 691
+  object MySQL80Connection1: TMySQL80Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    SkipLibraryVersionCheck = False
+    Left = 72
+    Top = 48
+  end
+  object MySQL80Connection2: TMySQL80Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    SkipLibraryVersionCheck = False
+    Left = 518
+    Top = 48
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Left = 68
+    Top = 166
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    Macros = <>
+    Left = 72
+    Top = 264
+  end
+  object SQLQuery2: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    Macros = <>
+    Left = 518
+    Top = 249
+  end
+  object SchemaConn: TMySQL80Connection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'eagle_foreup'
+    KeepConnection = False
+    Params.Strings = (
+      'Port=3306'
+    )
+    Password = 'password'
+    Transaction = SchemaTran
+    UserName = 'root'
+    HostName = '127.0.0.1'
+    SkipLibraryVersionCheck = True
+    Left = 279
+    Top = 57
+  end
+  object SchemaQ: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'Tables_in_eagle_foreup'
+        DataType = ftString
+        Precision = -1
+        Size = 73
+      end>
+    Active = True
+    Database = SchemaConn
+    Transaction = SchemaTran
+    SQL.Strings = (
+      'show tables;'
+    )
+    Params = <>
+    Macros = <>
+    Left = 281
+    Top = 200
+  end
+  object SchemaTran: TSQLTransaction
+    Active = True
+    Database = SchemaConn
+    Left = 280
+    Top = 128
+  end
+  object DataSource1: TDataSource
+    AutoEdit = False
+    DataSet = SchemaQ
+    Left = 279
+    Top = 283
+  end
+end

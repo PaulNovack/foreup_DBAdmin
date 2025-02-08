@@ -1,0 +1,103 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 488
+  HorizontalOffset = 2755
+  VerticalOffset = 378
+  Width = 691
+  object MySQL80Connection1: TMySQL80Connection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'eagle_foreup'
+    KeepConnection = False
+    Password = 'password'
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    HostName = '127.0.0.1'
+    SkipLibraryVersionCheck = True
+    Left = 72
+    Top = 48
+  end
+  object MySQL80Connection2: TMySQL80Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    SkipLibraryVersionCheck = False
+    Left = 518
+    Top = 48
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = MySQL80Connection1
+    Left = 68
+    Top = 166
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    Left = 72
+    Top = 264
+  end
+  object SQLQuery2: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    Macros = <>
+    Left = 518
+    Top = 249
+  end
+  object SchemaConn: TMySQL80Connection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'eagle_foreup'
+    KeepConnection = False
+    Params.Strings = (
+      'Port=3306'
+    )
+    Password = 'password'
+    Transaction = SchemaTran
+    UserName = 'root'
+    HostName = '127.0.0.1'
+    SkipLibraryVersionCheck = True
+    Left = 279
+    Top = 57
+  end
+  object SchemaQ: TSQLQuery
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'Tables_in_eagle_foreup'
+        DataType = ftString
+        Precision = -1
+        Size = 73
+      end>
+    Database = SchemaConn
+    Transaction = SchemaTran
+    SQL.Strings = (
+      'show tables;'
+    )
+    Params = <>
+    Macros = <>
+    Left = 281
+    Top = 200
+  end
+  object SchemaTran: TSQLTransaction
+    Active = False
+    Database = SchemaConn
+    Left = 280
+    Top = 128
+  end
+  object DataSource1: TDataSource
+    AutoEdit = False
+    DataSet = SchemaQ
+    OnDataChange = DataSource1DataChange
+    Left = 279
+    Top = 283
+  end
+  object DataSource2: TDataSource
+    DataSet = SQLQuery1
+    Left = 71
+    Top = 346
+  end
+end

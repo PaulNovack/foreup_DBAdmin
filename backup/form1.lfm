@@ -1,0 +1,495 @@
+object Form1: TForm1
+  Left = 2653
+  Height = 909
+  Top = 377
+  Width = 1380
+  Caption = 'ForeUp Database Application'
+  ClientHeight = 909
+  ClientWidth = 1380
+  Menu = MainMenu1
+  Position = poScreenCenter
+  LCLVersion = '3.8.0.0'
+  object Button1: TButton
+    Left = 1200
+    Height = 25
+    Top = 808
+    Width = 75
+    Caption = 'Button1'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 1200
+    Height = 25
+    Top = 832
+    Width = 75
+    Caption = 'Button2'
+    TabOrder = 1
+    OnClick = Button2Click
+  end
+  object PageControl1: TPageControl
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Splitter1
+    AnchorSideRight.Control = Owner
+    AnchorSideBottom.Control = Owner
+    Left = 0
+    Height = 858
+    Top = 51
+    Width = 1380
+    ActivePage = TS10
+    Align = alBottom
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 9
+    TabOrder = 2
+    object TS1: TTabSheet
+      Caption = 'TS1'
+      ClientHeight = 827
+      ClientWidth = 1370
+      object Memo1: TMemo
+        AnchorSideLeft.Control = TS1
+        AnchorSideTop.Control = TS1
+        AnchorSideRight.Control = TS1
+        AnchorSideBottom.Control = Splitter2
+        Left = 0
+        Height = 225
+        Top = 0
+        Width = 1370
+        Align = alTop
+        Anchors = []
+        TabOrder = 0
+      end
+      object DBGrid1: TDBGrid
+        Left = 0
+        Height = 593
+        Top = 234
+        Width = 1370
+        Align = alClient
+        Anchors = []
+        Color = clWindow
+        Columns = <>
+        TabOrder = 1
+      end
+      object Splitter2: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 9
+        Top = 225
+        Width = 1370
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object TS2: TTabSheet
+      Caption = 'TS2'
+      ClientHeight = 827
+      ClientWidth = 1370
+      object Memo2: TMemo
+        AnchorSideLeft.Control = TS1
+        AnchorSideTop.Control = TS1
+        AnchorSideRight.Control = TS1
+        AnchorSideBottom.Control = Splitter3
+        Left = 0
+        Height = 225
+        Top = 0
+        Width = 1370
+        Align = alTop
+        Anchors = []
+        TabOrder = 0
+      end
+      object DBGrid2: TDBGrid
+        Left = 0
+        Height = 593
+        Top = 234
+        Width = 1370
+        Align = alClient
+        Anchors = []
+        Color = clWindow
+        Columns = <>
+        TabOrder = 1
+      end
+      object Splitter3: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 9
+        Top = 225
+        Width = 1370
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object TS3: TTabSheet
+      Caption = 'TS3'
+      ClientHeight = 827
+      ClientWidth = 1370
+      object Memo3: TMemo
+        AnchorSideLeft.Control = TS1
+        AnchorSideTop.Control = TS1
+        AnchorSideRight.Control = TS1
+        AnchorSideBottom.Control = Splitter4
+        Left = 0
+        Height = 225
+        Top = 0
+        Width = 1370
+        Align = alTop
+        Anchors = []
+        TabOrder = 0
+      end
+      object DBGrid3: TDBGrid
+        Left = 0
+        Height = 593
+        Top = 234
+        Width = 1370
+        Align = alClient
+        Anchors = []
+        Color = clWindow
+        Columns = <>
+        TabOrder = 1
+      end
+      object Splitter4: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 9
+        Top = 225
+        Width = 1370
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object TS4: TTabSheet
+      Caption = 'TS4'
+      ClientHeight = 827
+      ClientWidth = 1370
+      object Memo4: TMemo
+        AnchorSideLeft.Control = TS1
+        AnchorSideTop.Control = TS1
+        AnchorSideRight.Control = TS1
+        AnchorSideBottom.Control = Splitter5
+        Left = 0
+        Height = 225
+        Top = 0
+        Width = 1370
+        Align = alTop
+        Anchors = []
+        TabOrder = 0
+      end
+      object DBGrid4: TDBGrid
+        Left = 0
+        Height = 593
+        Top = 234
+        Width = 1370
+        Align = alClient
+        Anchors = []
+        Color = clWindow
+        Columns = <>
+        TabOrder = 1
+      end
+      object Splitter5: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 9
+        Top = 225
+        Width = 1370
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object TS5: TTabSheet
+      Caption = 'TS5'
+      ClientHeight = 827
+      ClientWidth = 1370
+      object Memo5: TMemo
+        AnchorSideLeft.Control = TS1
+        AnchorSideTop.Control = TS1
+        AnchorSideRight.Control = TS1
+        AnchorSideBottom.Control = Splitter6
+        Left = 0
+        Height = 225
+        Top = 0
+        Width = 1370
+        Align = alTop
+        Anchors = []
+        TabOrder = 0
+      end
+      object DBGrid5: TDBGrid
+        Left = 0
+        Height = 593
+        Top = 234
+        Width = 1370
+        Align = alClient
+        Anchors = []
+        Color = clWindow
+        Columns = <>
+        TabOrder = 1
+      end
+      object Splitter6: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 9
+        Top = 225
+        Width = 1370
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object TS6: TTabSheet
+      Caption = 'TS6'
+      ClientHeight = 827
+      ClientWidth = 1370
+      object Memo6: TMemo
+        AnchorSideLeft.Control = TS1
+        AnchorSideTop.Control = TS1
+        AnchorSideRight.Control = TS1
+        AnchorSideBottom.Control = Splitter7
+        Left = 0
+        Height = 225
+        Top = 0
+        Width = 1370
+        Align = alTop
+        Anchors = []
+        TabOrder = 0
+      end
+      object DBGrid6: TDBGrid
+        Left = 0
+        Height = 593
+        Top = 234
+        Width = 1370
+        Align = alClient
+        Anchors = []
+        Color = clWindow
+        Columns = <>
+        TabOrder = 1
+      end
+      object Splitter7: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 9
+        Top = 225
+        Width = 1370
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object TS7: TTabSheet
+      Caption = 'TS7'
+      ClientHeight = 827
+      ClientWidth = 1370
+      object Memo7: TMemo
+        AnchorSideLeft.Control = TS1
+        AnchorSideTop.Control = TS1
+        AnchorSideRight.Control = TS1
+        AnchorSideBottom.Control = Splitter8
+        Left = 0
+        Height = 225
+        Top = 0
+        Width = 1370
+        Align = alTop
+        Anchors = []
+        TabOrder = 0
+      end
+      object DBGrid7: TDBGrid
+        Left = 0
+        Height = 593
+        Top = 234
+        Width = 1370
+        Align = alClient
+        Anchors = []
+        Color = clWindow
+        Columns = <>
+        TabOrder = 1
+      end
+      object Splitter8: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 9
+        Top = 225
+        Width = 1370
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object TS8: TTabSheet
+      Caption = 'TS8'
+      ClientHeight = 827
+      ClientWidth = 1370
+      object Memo8: TMemo
+        AnchorSideLeft.Control = TS1
+        AnchorSideTop.Control = TS1
+        AnchorSideRight.Control = TS1
+        AnchorSideBottom.Control = Splitter9
+        Left = 0
+        Height = 225
+        Top = 0
+        Width = 1370
+        Align = alTop
+        Anchors = []
+        TabOrder = 0
+      end
+      object DBGrid8: TDBGrid
+        Left = 0
+        Height = 593
+        Top = 234
+        Width = 1370
+        Align = alClient
+        Anchors = []
+        Color = clWindow
+        Columns = <>
+        TabOrder = 1
+      end
+      object Splitter9: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 9
+        Top = 225
+        Width = 1370
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object TS9: TTabSheet
+      Caption = 'TS9'
+      ClientHeight = 827
+      ClientWidth = 1370
+      object Memo9: TMemo
+        AnchorSideLeft.Control = TS1
+        AnchorSideTop.Control = TS1
+        AnchorSideRight.Control = TS1
+        AnchorSideBottom.Control = Splitter10
+        Left = 0
+        Height = 225
+        Top = 0
+        Width = 1370
+        Align = alTop
+        Anchors = []
+        TabOrder = 0
+      end
+      object DBGrid9: TDBGrid
+        Left = 0
+        Height = 593
+        Top = 234
+        Width = 1370
+        Align = alClient
+        Anchors = []
+        Color = clWindow
+        Columns = <>
+        TabOrder = 1
+      end
+      object Splitter10: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 9
+        Top = 225
+        Width = 1370
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object TS10: TTabSheet
+      Caption = 'TS10'
+      ClientHeight = 827
+      ClientWidth = 1370
+      object Memo10: TMemo
+        AnchorSideLeft.Control = TS1
+        AnchorSideTop.Control = TS1
+        AnchorSideRight.Control = TS1
+        AnchorSideBottom.Control = Splitter11
+        Left = 0
+        Height = 225
+        Top = 0
+        Width = 1370
+        Align = alTop
+        Anchors = []
+        TabOrder = 0
+      end
+      object DBGrid10: TDBGrid
+        Left = 0
+        Height = 593
+        Top = 234
+        Width = 1370
+        Align = alClient
+        Anchors = []
+        Color = clWindow
+        Columns = <>
+        TabOrder = 1
+      end
+      object Splitter11: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 9
+        Top = 225
+        Width = 1370
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 51
+    Top = 0
+    Width = 1380
+    Align = alTop
+    Anchors = [akLeft, akRight]
+    ClientHeight = 51
+    ClientWidth = 1380
+    TabOrder = 3
+    object CheckBox1: TCheckBox
+      Left = 32
+      Height = 23
+      Top = 16
+      Width = 129
+      Caption = 'Use Production'
+      TabOrder = 0
+      OnChange = CheckBox1Change
+    end
+    object Button3: TButton
+      Left = 648
+      Height = 25
+      Top = 8
+      Width = 112
+      Caption = 'Execute Query'
+      TabOrder = 1
+      OnClick = Button3Click
+    end
+    object Button4: TButton
+      Left = 184
+      Height = 25
+      Top = 16
+      Width = 109
+      Caption = 'Show Tables'
+      TabOrder = 2
+      OnClick = Button4Click
+    end
+  end
+  object Splitter1: TSplitter
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Panel1
+    AnchorSideRight.Control = Owner
+    AnchorSideBottom.Control = PageControl1
+    Cursor = crVSplit
+    Left = 0
+    Height = 5
+    Top = 51
+    Width = 1380
+    Align = alTop
+    ResizeAnchor = akTop
+  end
+  object MainMenu1: TMainMenu
+    Left = 192
+    Top = 96
+    object MenuItem1: TMenuItem
+      Caption = 'File'
+    end
+    object MenuItem2: TMenuItem
+      Caption = 'Database Connections'
+      OnClick = MenuItem2Click
+      object MenuItem3: TMenuItem
+        Caption = 'Development Server'
+        OnClick = MenuItem3Click
+      end
+      object MenuItem4: TMenuItem
+        Caption = 'Production Server'
+        OnClick = MenuItem4Click
+      end
+    end
+  end
+end

@@ -1,0 +1,73 @@
+object Form3: TForm3
+  Left = 2721
+  Height = 429
+  Top = 376
+  Width = 528
+  Caption = 'Production Server Configuration'
+  ClientHeight = 429
+  ClientWidth = 528
+  OnClose = FormClose
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '3.8.0.0'
+  object EditServerName: TEdit
+    Left = 136
+    Height = 34
+    Top = 64
+    Width = 240
+    TabOrder = 0
+  end
+  object EditUserName: TEdit
+    Left = 136
+    Height = 34
+    Top = 104
+    Width = 240
+    TabOrder = 1
+  end
+  object EditPassword: TEdit
+    Left = 136
+    Height = 34
+    Top = 144
+    Width = 240
+    TabOrder = 2
+  end
+  object EditDatabase: TEdit
+    Left = 136
+    Height = 34
+    Top = 184
+    Width = 240
+    TabOrder = 3
+  end
+  object Label1: TLabel
+    Left = 48
+    Height = 17
+    Top = 72
+    Width = 83
+    Alignment = taRightJustify
+    Caption = 'ServerName'
+  end
+  object Label2: TLabel
+    Left = 56
+    Height = 17
+    Top = 112
+    Width = 71
+    Alignment = taRightJustify
+    Caption = 'UserName'
+  end
+  object Label3: TLabel
+    Left = 61
+    Height = 17
+    Top = 152
+    Width = 66
+    Alignment = taRightJustify
+    Caption = 'Password'
+  end
+  object Label4: TLabel
+    Left = 63
+    Height = 17
+    Top = 192
+    Width = 64
+    Alignment = taRightJustify
+    Caption = 'Database'
+  end
+end
