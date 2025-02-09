@@ -1,9 +1,9 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Height = 488
-  HorizontalOffset = 2755
-  VerticalOffset = 378
-  Width = 691
+  Height = 698
+  HorizontalOffset = 493
+  VerticalOffset = 216
+  Width = 1192
   object MySQL80Connection1: TMySQL80Connection
     Connected = True
     LoginPrompt = False
@@ -31,12 +31,13 @@ object DataModule1: TDataModule1
     Left = 68
     Top = 166
   end
-  object SQLQuery1: TSQLQuery
+  object SQ1: TSQLQuery
     FieldDefs = <>
     Database = MySQL80Connection1
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
+    UpdateMode = upWhereAll
     Left = 72
     Top = 264
   end
@@ -95,8 +96,8 @@ object DataModule1: TDataModule1
     Left = 279
     Top = 283
   end
-  object DataSource2: TDataSource
-    DataSet = SQLQuery1
+  object DS1: TDataSource
+    DataSet = SQ1
     Left = 71
     Top = 346
   end

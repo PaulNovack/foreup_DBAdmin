@@ -12,6 +12,7 @@ type
   { TForm3 }
 
   TForm3 = class(TForm)
+    Button1: TButton;
     EditDatabase: TEdit;
     EditPassword: TEdit;
     EditServerName: TEdit;
@@ -20,6 +21,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
@@ -101,6 +103,11 @@ procedure TForm3.FormClose(Sender: TObject; var CloseAction: TCloseAction);
   finally
     JSONObject.Free;
   end;
+end;
+
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+  Form3.Close;
 end;
 
 end.

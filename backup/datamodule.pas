@@ -13,11 +13,11 @@ type
 
   TDataModule1 = class(TDataModule)
     DataSource1: TDataSource;
-    DataSource2: TDataSource;
+    DS1: TDataSource;
     MySQL80Connection1: TMySQL80Connection;
     MySQL80Connection2: TMySQL80Connection;
     SchemaConn: TMySQL80Connection;
-    SQLQuery1: TSQLQuery;
+    SQ1: TSQLQuery;
     SQLQuery2: TSQLQuery;
     SchemaQ: TSQLQuery;
     SQLTransaction1: TSQLTransaction;

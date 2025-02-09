@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
-  Menus, ExtCtrls, DBGrids, Buttons, Unit2, Unit3,DataModule,Unit5;
+  Menus, ExtCtrls, DBGrids, Buttons, DevServerConfig, ProductionServerConfig,
+  DataModule,listtables,loadSqlStatements,SaveQueryName, fpjson, jsonparser;
 
 type
 
@@ -17,9 +18,11 @@ type
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
-    Button5: TButton;
+    SelectButton: TButton;
     Button6: TButton;
     Button7: TButton;
+    Button8: TButton;
+    Button9: TButton;
     CheckBox1: TCheckBox;
     LimitCheckBox: TCheckBox;
     LimitNumberComboBox: TComboBox;
@@ -50,6 +53,10 @@ type
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
     PageControl1: TPageControl;
     Panel1: TPanel;
     Splitter1: TSplitter;
@@ -77,16 +84,20 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
-    procedure Button5Click(Sender: TObject);
+    procedure Memo1Change(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
+    procedure SelectButtonClick(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
-    procedure Shape1ChangeBounds(Sender: TObject);
-
+    procedure MenuItem5Click(Sender: TObject);
+    procedure MenuItem6Click(Sender: TObject);
     procedure RemoveLinesStartingWithLimit(AMemo: TMemo);
+    function AddQueryToFile(const AFileName, AQueryName, ASQL: string) : Boolean;
   private
 
   public
@@ -128,7 +139,7 @@ begin
   DataModule1.SQLQuery1.SQL.Text := Memo1.Text;
   DataModule1.SQLQuery1.Active := true;
   for dbGridColumns := 0 to DBGrid1.Columns.Count - 1 do
-    DBGrid1.Columns[dbGridColumns].Width := 85;
+    DBGrid1.Columns[dbGridColumns].Width := 200;
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);
@@ -140,7 +151,17 @@ begin
      Form4.Show;
 end;
 
-procedure TForm1.Button5Click(Sender: TObject);
+procedure TForm1.Memo1Change(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.Panel1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.SelectButtonClick(Sender: TObject);
 var
   selectString: String;
 begin
@@ -166,7 +187,12 @@ begin
   DataModule1.SQLTransaction1.Commit;
   DataModule1.SQLQuery1.Active:= true;
   for dbGridColumns := 0 to DBGrid1.Columns.Count - 1 do
-    DBGrid1.Columns[dbGridColumns].Width := 85;
+    DBGrid1.Columns[dbGridColumns].Width := 200;
+end;
+
+procedure TForm1.Button8Click(Sender: TObject);
+begin
+  Memo1.Text := '';
 end;
 
 procedure TForm1.CheckBox1Change(Sender: TObject);
@@ -189,10 +215,33 @@ begin
   Form3.Show;
 end;
 
-procedure TForm1.Shape1ChangeBounds(Sender: TObject);
+procedure TForm1.MenuItem5Click(Sender: TObject);
+var
+  userChoice: TModalResult;
+  return: Boolean;
 begin
-
+    userChoice := SaveQueryForm.ShowModal;  // This line blocks until Form2 is closed
+    case userChoice of
+      mrOk:
+        //ShowMessage('User clicked OK. Proceed with saving...');
+        ShowMessage(SaveQueryForm.Edit1.Text);
+        Form1.AddQueryToFile('queries.json',SaveQueryForm.Edit1.Text,Form1.Memo1.Text);
+    end;
 end;
+
+procedure TForm1.MenuItem6Click(Sender: TObject);
+var
+  userChoice: TModalResult;
+begin
+    userChoice := ListQuerysForm.ShowModal;  // This line blocks until Form2 is closed
+    case userChoice of
+      mrOk:
+        ShowMessage('User clicked OK. Proceed with saving...');
+      mrCancel:
+        ShowMessage('User clicked Cancel. Abort changes...');
+    end;
+end;
+
 procedure TForm1.RemoveLinesStartingWithLimit(AMemo: TMemo);
 var
   i: Integer;
@@ -218,6 +267,76 @@ begin
     TempList.Free;
   end;
 end;
+
+
+function TForm1.AddQueryToFile(const AFileName, AQueryName, ASQL: string): Boolean;
+var
+  fs: TFileStream;
+  JSONArray: TJSONArray;
+  JSONObject: TJSONObject;
+  JSONParser: TJSONParser;
+  JSONData: TJSONData;
+  SL: TStringList;
+begin
+  Result := False;  // default to failure
+
+  // If the file does not exist, create a fresh JSON array
+  if not FileExists(AFileName) then
+  begin
+    JSONArray := TJSONArray.Create;
+  end
+  else
+  begin
+    // File exists, parse it
+    try
+      fs := TFileStream.Create(AFileName, fmOpenRead or fmShareDenyNone);
+      try
+        JSONParser := TJSONParser.Create(fs);
+        try
+          JSONData := JSONParser.Parse;
+          if (JSONData is TJSONArray) then
+            JSONArray := TJSONArray(JSONData.Clone)  // clone so we can free original
+          else
+          begin
+            // If it's not an array, we consider it invalid or handle differently
+            JSONArray := TJSONArray.Create;
+          end;
+        finally
+          JSONData.Free;
+          JSONParser.Free;
+        end;
+      finally
+        fs.Free;
+      end;
+    except
+      // If any error occurs, fall back to an empty array
+      JSONArray := TJSONArray.Create;
+    end;
+  end;
+
+  try
+    // Create a new JSON object for the new query
+    JSONObject := TJSONObject.Create;
+    JSONObject.Add('QueryName', AQueryName);
+    JSONObject.Add('SQL', ASQL);
+
+    // Add it to the array
+    JSONArray.Add(JSONObject);
+
+    // Write back to file
+    SL := TStringList.Create;
+    try
+      SL.Text := JSONArray.FormatJSON();
+      SL.SaveToFile(AFileName);
+      Result := True;  // success
+    finally
+      SL.Free;
+    end;
+  finally
+    JSONArray.Free;
+  end;
+end;
+
 
 
 end.

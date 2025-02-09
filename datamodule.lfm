@@ -1,9 +1,9 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Height = 488
-  HorizontalOffset = 2755
-  VerticalOffset = 378
-  Width = 691
+  Height = 698
+  HorizontalOffset = 493
+  VerticalOffset = 216
+  Width = 1192
   object MySQL80Connection1: TMySQL80Connection
     Connected = True
     LoginPrompt = False
@@ -22,8 +22,8 @@ object DataModule1: TDataModule1
     LoginPrompt = False
     KeepConnection = False
     SkipLibraryVersionCheck = False
-    Left = 518
-    Top = 48
+    Left = 1007
+    Top = 56
   end
   object SQLTransaction1: TSQLTransaction
     Active = True
@@ -31,7 +31,7 @@ object DataModule1: TDataModule1
     Left = 68
     Top = 166
   end
-  object SQLQuery1: TSQLQuery
+  object SQ1: TSQLQuery
     FieldDefs = <>
     Database = MySQL80Connection1
     Transaction = SQLTransaction1
@@ -45,8 +45,8 @@ object DataModule1: TDataModule1
     FieldDefs = <>
     Params = <>
     Macros = <>
-    Left = 518
-    Top = 249
+    Left = 1007
+    Top = 257
   end
   object SchemaConn: TMySQL80Connection
     Connected = False
@@ -61,8 +61,8 @@ object DataModule1: TDataModule1
     UserName = 'root'
     HostName = '127.0.0.1'
     SkipLibraryVersionCheck = True
-    Left = 279
-    Top = 57
+    Left = 768
+    Top = 65
   end
   object SchemaQ: TSQLQuery
     MaxIndexesCount = 4
@@ -80,25 +80,160 @@ object DataModule1: TDataModule1
     )
     Params = <>
     Macros = <>
-    Left = 281
-    Top = 200
+    Left = 770
+    Top = 208
   end
   object SchemaTran: TSQLTransaction
     Active = False
     Database = SchemaConn
-    Left = 280
-    Top = 128
+    Left = 769
+    Top = 136
   end
   object DataSource1: TDataSource
     AutoEdit = False
     DataSet = SchemaQ
     OnDataChange = DataSource1DataChange
-    Left = 279
-    Top = 283
+    Left = 768
+    Top = 291
   end
-  object DataSource2: TDataSource
-    DataSet = SQLQuery1
+  object DS1: TDataSource
+    DataSet = SQ1
     Left = 71
     Top = 346
+  end
+  object SQ2: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    UpdateMode = upWhereAll
+    Left = 129
+    Top = 264
+  end
+  object DS2: TDataSource
+    DataSet = SQ2
+    Left = 128
+    Top = 346
+  end
+  object SQ3: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    UpdateMode = upWhereAll
+    Left = 177
+    Top = 264
+  end
+  object DS3: TDataSource
+    DataSet = SQ3
+    Left = 176
+    Top = 346
+  end
+  object SQ4: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    UpdateMode = upWhereAll
+    Left = 232
+    Top = 264
+  end
+  object DS4: TDataSource
+    DataSet = SQ4
+    Left = 232
+    Top = 346
+  end
+  object SQ5: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    UpdateMode = upWhereAll
+    Left = 280
+    Top = 264
+  end
+  object DS5: TDataSource
+    DataSet = SQ5
+    Left = 280
+    Top = 344
+  end
+  object SQ6: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    UpdateMode = upWhereAll
+    Left = 328
+    Top = 264
+  end
+  object DS6: TDataSource
+    DataSet = SQ6
+    Left = 328
+    Top = 344
+  end
+  object SQ7: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    UpdateMode = upWhereAll
+    Left = 376
+    Top = 264
+  end
+  object DS7: TDataSource
+    DataSet = SQ7
+    Left = 376
+    Top = 344
+  end
+  object SQ8: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    UpdateMode = upWhereAll
+    Left = 432
+    Top = 264
+  end
+  object DS8: TDataSource
+    DataSet = SQ8
+    Left = 432
+    Top = 344
+  end
+  object SQ9: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    UpdateMode = upWhereAll
+    Left = 488
+    Top = 264
+  end
+  object DS9: TDataSource
+    DataSet = SQ9
+    Left = 488
+    Top = 344
+  end
+  object SQ10: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    UpdateMode = upWhereAll
+    Left = 536
+    Top = 264
+  end
+  object DS10: TDataSource
+    DataSet = SQ10
+    Left = 536
+    Top = 344
   end
 end

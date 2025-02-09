@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 2254
+  Left = 2203
   Height = 909
-  Top = 316
+  Top = 370
   Width = 1380
   Caption = 'ForeUp Database Application'
   ClientHeight = 909
@@ -60,6 +60,7 @@ object Form1: TForm1
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 0
+        OnChange = Memo1Change
       end
       object DBGrid1: TDBGrid
         Left = 0
@@ -436,6 +437,7 @@ object Form1: TForm1
     ClientHeight = 51
     ClientWidth = 1380
     TabOrder = 3
+    OnClick = Panel1Click
     object CheckBox1: TCheckBox
       Left = 32
       Height = 23
@@ -463,14 +465,14 @@ object Form1: TForm1
       TabOrder = 2
       OnClick = Button4Click
     end
-    object Button5: TButton
+    object SelectButton: TButton
       Left = 176
       Height = 25
       Top = 16
       Width = 104
       Caption = 'Select * from '
       TabOrder = 3
-      OnClick = Button5Click
+      OnClick = SelectButtonClick
     end
     object CourseIdEdit: TEdit
       Left = 568
@@ -497,7 +499,7 @@ object Form1: TForm1
       OnClick = Button6Click
     end
     object LimitCheckBox: TCheckBox
-      Left = 728
+      Left = 656
       Height = 23
       Top = 16
       Width = 61
@@ -507,12 +509,11 @@ object Form1: TForm1
       TabOrder = 6
     end
     object LimitNumberComboBox: TComboBox
-      Left = 799
+      Left = 727
       Height = 34
       Top = 10
       Width = 160
       ItemHeight = 0
-      ItemIndex = 3
       Items.Strings = (
         '10'
         '25'
@@ -523,7 +524,6 @@ object Form1: TForm1
         '1000'
         '10000'
         '100000'
-        'None'
       )
       TabOrder = 7
       Text = '100'
@@ -532,10 +532,27 @@ object Form1: TForm1
       Left = 1067
       Height = 25
       Top = 16
-      Width = 75
-      Caption = 'Button7'
+      Width = 109
+      Caption = 'Save Changes'
       TabOrder = 8
       OnClick = Button7Click
+    end
+    object Button8: TButton
+      Left = 896
+      Height = 25
+      Top = 14
+      Width = 75
+      Caption = 'Clear SQL'
+      TabOrder = 9
+      OnClick = Button8Click
+    end
+    object Button9: TButton
+      Left = 976
+      Height = 25
+      Top = 14
+      Width = 75
+      Caption = 'Share'
+      TabOrder = 10
     end
   end
   object Splitter1: TSplitter
@@ -556,6 +573,9 @@ object Form1: TForm1
     Top = 96
     object MenuItem1: TMenuItem
       Caption = 'File'
+      object MenuItem7: TMenuItem
+        Caption = 'MenuItem7'
+      end
     end
     object MenuItem2: TMenuItem
       Caption = 'Database Connections'
@@ -568,6 +588,17 @@ object Form1: TForm1
         Caption = 'Production Server'
         OnClick = MenuItem4Click
       end
+    end
+    object MenuItem5: TMenuItem
+      Caption = 'Save Query To Repeatable'
+      OnClick = MenuItem5Click
+    end
+    object MenuItem6: TMenuItem
+      Caption = 'Get Query From Repeatable'
+      OnClick = MenuItem6Click
+    end
+    object MenuItem8: TMenuItem
+      Caption = 'Share'
     end
   end
 end

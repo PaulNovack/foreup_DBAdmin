@@ -42,8 +42,7 @@ end;
 procedure TForm4.DBGrid1CellClick(Column: TColumn);
 begin
   Form1.Memo1.Append(DBGrid1.SelectedField.AsString);
-  this.Close;
-
+  Form4.Close;
 end;
 
 end.

@@ -1,0 +1,16 @@
+[
+  {
+    "QueryName": "Customers",
+    "SQL": "SELECT * FROM customers"
+  },
+  {
+    "QueryName": "Orders",
+    "SQL": "SELECT * FROM orders"
+  },
+  {
+    "QueryName": "Employees",
+    "SQL": "SELECT * FROM employees WHERE active=1"
+  }
+]
+
+

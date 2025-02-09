@@ -21,6 +21,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -66,6 +67,11 @@ procedure TForm2.FormClose(Sender: TObject; var CloseAction: TCloseAction);
   finally
     JSONObject.Free;
   end;
+end;
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+  Form2.Close;
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);

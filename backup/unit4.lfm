@@ -1,91 +1,51 @@
-object DataModule1: TDataModule1
-  OldCreateOrder = False
-  Height = 488
-  HorizontalOffset = 2772
-  VerticalOffset = 580
-  Width = 691
-  object MySQL80Connection1: TMySQL80Connection
-    Connected = False
-    LoginPrompt = False
-    KeepConnection = False
-    SkipLibraryVersionCheck = False
-    Left = 72
+object Form5: TForm5
+  Left = 2653
+  Height = 375
+  Top = 307
+  Width = 607
+  Caption = 'Query Selector'
+  ClientHeight = 375
+  ClientWidth = 607
+  OnCreate = FormCreate
+  LCLVersion = '3.8.0.0'
+  object ComboBox1: TComboBox
+    Left = 16
+    Height = 34
+    Top = 8
+    Width = 580
+    ItemHeight = 0
+    TabOrder = 0
+    Text = 'ComboBox1'
+    OnChange = ComboBox1Change
+  end
+  object Memo1: TMemo
+    Left = 16
+    Height = 264
     Top = 48
-  end
-  object MySQL80Connection2: TMySQL80Connection
-    Connected = False
-    LoginPrompt = False
-    KeepConnection = False
-    SkipLibraryVersionCheck = False
-    Left = 518
-    Top = 48
-  end
-  object SQLTransaction1: TSQLTransaction
-    Active = False
-    Left = 68
-    Top = 166
-  end
-  object SQLQuery1: TSQLQuery
-    FieldDefs = <>
-    Params = <>
-    Macros = <>
-    Left = 72
-    Top = 264
-  end
-  object SQLQuery2: TSQLQuery
-    FieldDefs = <>
-    Params = <>
-    Macros = <>
-    Left = 518
-    Top = 249
-  end
-  object SchemaConn: TMySQL80Connection
-    Connected = True
-    LoginPrompt = False
-    DatabaseName = 'eagle_foreup'
-    KeepConnection = False
-    Params.Strings = (
-      'Port=3306'
+    Width = 576
+    Lines.Strings = (
+      'Memo1'
     )
-    Password = 'password'
-    Transaction = SchemaTran
-    UserName = 'root'
-    HostName = '127.0.0.1'
-    SkipLibraryVersionCheck = True
-    Left = 279
-    Top = 57
+    TabOrder = 1
   end
-  object SchemaQ: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    MaxIndexesCount = 4
-    FieldDefs = <    
-      item
-        Name = 'Tables_in_eagle_foreup'
-        DataType = ftString
-        Precision = -1
-        Size = 73
-      end>
-    Active = True
-    Database = SchemaConn
-    Transaction = SchemaTran
-    SQL.Strings = (
-      'show tables;'
-    )
-    Params = <>
-    Macros = <>
-    Left = 281
-    Top = 200
+  object Button1: TButton
+    Left = 128
+    Height = 25
+    Top = 328
+    Width = 91
+    Caption = 'Use Query'
+    ModalResult = 1
+    TabOrder = 2
+    OnClick = Button1Click
   end
-  object SchemaTran: TSQLTransaction
-    Active = True
-    Database = SchemaConn
-    Left = 280
-    Top = 128
-  end
-  object DataSource1: TDataSource
-    AutoEdit = False
-    DataSet = SchemaQ
-    Left = 279
-    Top = 283
+  object Button2: TButton
+    Left = 344
+    Height = 25
+    Top = 328
+    Width = 75
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 3
+    OnClick = Button2Click
   end
 end

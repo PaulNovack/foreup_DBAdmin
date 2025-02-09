@@ -78,5 +78,6 @@ object Form2: TForm2
     Width = 75
     Caption = 'Close'
     TabOrder = 4
+    OnClick = Button1Click
   end
 end

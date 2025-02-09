@@ -10,7 +10,9 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Unit1, unit2, unit3, DataModule, unit5
+  Forms, MainForm, DevServerConfig, 
+ProductionServerConfig, DataModule, listtables, loadSqlStatements, 
+SaveQueryName
   { you can add units after this };
 
 {$R *.res}
@@ -20,11 +22,14 @@ begin
   Application.Title:='ForeUp Database Application';
   Application.Scaled:=True;
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TForm2, Form2);
-  Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TMainApplicationForm, MainApplicationForm);
+  Application.CreateForm(TDevelopmentServerConfigForm, 
+    DevelopmentServerConfigForm);
+  Application.CreateForm(TProductionServerConfgForm, ProductionServerConfgForm);
   Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TForm4, Form4);
+  Application.CreateForm(TListTablesForm, ListTablesForm);
+  Application.CreateForm(TListQuerysForm, ListQuerysForm);
+  Application.CreateForm(TSaveQueryForm, SaveQueryForm);
   Application.Run;
 end.
 
