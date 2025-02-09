@@ -5,13 +5,13 @@ unit ProductionServerConfig;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fpjson, jsonparser;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fpjson, jsonparser,DataModule;
 
 type
 
-  { TForm3 }
+  { TProductionServerConfgForm }
 
-  TForm3 = class(TForm)
+  TProductionServerConfgForm = class(TForm)
     Button1: TButton;
     EditDatabase: TEdit;
     EditPassword: TEdit;
@@ -31,15 +31,15 @@ type
   end;
 
 var
-  Form3: TForm3;
+  ProductionServerConfgForm: TProductionServerConfgForm;
 
 implementation
 
 {$R *.lfm}
 
-{ TForm3 }
+{ TProductionServerConfgForm }
 
-procedure TForm3.FormShow(Sender: TObject);
+procedure TProductionServerConfgForm.FormShow(Sender: TObject);
   var
     JSONData: TJSONData;
     JSONObject: TJSONObject;
@@ -77,9 +77,10 @@ procedure TForm3.FormShow(Sender: TObject);
   finally
     FileStream.Free;
   end;
+
 end;
 
-procedure TForm3.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TProductionServerConfgForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
   var
      JSONObject: TJSONObject;
      JSONString: TStringList;
@@ -103,11 +104,17 @@ procedure TForm3.FormClose(Sender: TObject; var CloseAction: TCloseAction);
   finally
     JSONObject.Free;
   end;
+  DataModule.DataModule1.MySQL80Connection1.Connected := false;
+  DataModule.DataModule1.MySQL80Connection1.HostName := EditServerName.Text;
+  DataModule.DataModule1.MySQL80Connection1.DatabaseName := EditDatabase.Text;
+  DataModule.DataModule1.MySQL80Connection1.UserName := EditUserName.Text;
+  DataModule.DataModule1.MySQL80Connection1.Password := EditPassword.Text;
+  DataModule.DataModule1.MySQL80Connection1.Connected := true;
 end;
 
-procedure TForm3.Button1Click(Sender: TObject);
+procedure TProductionServerConfgForm.Button1Click(Sender: TObject);
 begin
-  Form3.Close;
+  ProductionServerConfgForm.Close;
 end;
 
 end.

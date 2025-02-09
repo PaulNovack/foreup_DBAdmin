@@ -5,13 +5,13 @@ unit DevServerConfig;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fpjson, jsonparser;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fpjson, jsonparser,DataModule;
 
 type
 
-  { TForm2 }
+  { TDevelopmentServerConfigForm }
 
-  TForm2 = class(TForm)
+  TDevelopmentServerConfigForm = class(TForm)
     Button1: TButton;
     EditServerName: TEdit;
     EditUserName: TEdit;
@@ -32,17 +32,17 @@ type
   end;
 
 var
-  Form2: TForm2;
+  DevelopmentServerConfigForm: TDevelopmentServerConfigForm;
 
 implementation
 
 {$R *.lfm}
 
-{ TForm2 }
+{ TDevelopmentServerConfigForm }
 
 
 
-procedure TForm2.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TDevelopmentServerConfigForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 
   var
   JSONObject: TJSONObject;
@@ -67,19 +67,25 @@ procedure TForm2.FormClose(Sender: TObject; var CloseAction: TCloseAction);
   finally
     JSONObject.Free;
   end;
+  DataModule.DataModule1.MySQL80Connection1.Connected := false;
+  DataModule.DataModule1.MySQL80Connection1.HostName := EditServerName.Text;
+  DataModule.DataModule1.MySQL80Connection1.DatabaseName := EditDatabase.Text;
+  DataModule.DataModule1.MySQL80Connection1.UserName := EditUserName.Text;
+  DataModule.DataModule1.MySQL80Connection1.Password := EditPassword.Text;
+  DataModule.DataModule1.MySQL80Connection1.Connected := true;
 end;
 
-procedure TForm2.Button1Click(Sender: TObject);
+procedure TDevelopmentServerConfigForm.Button1Click(Sender: TObject);
 begin
-  Form2.Close;
+  DevelopmentServerConfigForm.Close;
 end;
 
-procedure TForm2.FormCreate(Sender: TObject);
+procedure TDevelopmentServerConfigForm.FormCreate(Sender: TObject);
 begin
 
 end;
 
-procedure TForm2.FormShow(Sender: TObject);
+procedure TDevelopmentServerConfigForm.FormShow(Sender: TObject);
 
   var
   JSONData: TJSONData;

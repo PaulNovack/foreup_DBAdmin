@@ -1,4 +1,4 @@
-object Form2: TForm2
+object DevelopmentServerConfigForm: TDevelopmentServerConfigForm
   Left = 2310
   Height = 211
   Top = 645

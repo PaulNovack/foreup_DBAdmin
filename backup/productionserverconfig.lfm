@@ -1,4 +1,4 @@
-object Form3: TForm3
+object ProductionServerConfgForm: TProductionServerConfgForm
   Left = 2727
   Height = 211
   Top = 741

@@ -5,7 +5,7 @@ unit ProductionServerConfig;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fpjson, jsonparser;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fpjson, jsonparser,DataModule;
 
 type
 
@@ -13,6 +13,7 @@ type
 
   TProductionServerConfgForm = class(TForm)
     Button1: TButton;
+    Button2: TButton;
     EditDatabase: TEdit;
     EditPassword: TEdit;
     EditServerName: TEdit;
@@ -77,6 +78,7 @@ procedure TProductionServerConfgForm.FormShow(Sender: TObject);
   finally
     FileStream.Free;
   end;
+
 end;
 
 procedure TProductionServerConfgForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -103,6 +105,12 @@ procedure TProductionServerConfgForm.FormClose(Sender: TObject; var CloseAction:
   finally
     JSONObject.Free;
   end;
+  DataModule.DataModule1.MySQL80Connection1.Connected := false;
+  DataModule.DataModule1.MySQL80Connection1.HostName := EditServerName.Text;
+  DataModule.DataModule1.MySQL80Connection1.DatabaseName := EditDatabase.Text;
+  DataModule.DataModule1.MySQL80Connection1.UserName := EditUserName.Text;
+  DataModule.DataModule1.MySQL80Connection1.Password := EditPassword.Text;
+  DataModule.DataModule1.MySQL80Connection1.Connected := true;
 end;
 
 procedure TProductionServerConfgForm.Button1Click(Sender: TObject);

@@ -27,8 +27,6 @@ type
     Button6: TButton;
     Button7: TButton;
     Button8: TButton;
-    Button9: TButton;
-    CheckBox1: TCheckBox;
     LimitCheckBox: TCheckBox;
     LimitNumberComboBox: TComboBox;
     DBGrid1: TDBGrid;
@@ -54,13 +52,11 @@ type
     Memo7: TMemo;
     Memo8: TMemo;
     Memo9: TMemo;
-    MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
-    MenuItem7: TMenuItem;
     PageControl1: TPageControl;
     Panel1: TPanel;
     Splitter1: TSplitter;
@@ -88,6 +84,10 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure PageControl1Change(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
     procedure SelectButtonClick(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
@@ -200,6 +200,26 @@ begin
   thisMemo.Append(ListTablesForm.DBGrid1.SelectedField.AsString);
 end;
 
+procedure TMainApplicationForm.Button9Click(Sender: TObject);
+begin
+
+end;
+
+procedure TMainApplicationForm.FormCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TMainApplicationForm.PageControl1Change(Sender: TObject);
+begin
+
+end;
+
+procedure TMainApplicationForm.Panel1Click(Sender: TObject);
+begin
+
+end;
+
 
 
 procedure TMainApplicationForm.SelectButtonClick(Sender: TObject);
@@ -217,31 +237,44 @@ end;
 
 procedure TMainApplicationForm.Button6Click(Sender: TObject);
 var
+  selectString: String;
+  activeTab: Integer;
+  thisMemo: TMemo;
   whereString: String;
 begin
   whereString := 'where course_id = ' + ':courseId';
-  Memo1.Append(whereString);
+  thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
+  thisMemo.Append(whereString);
 end;
 
 procedure TMainApplicationForm.Button7Click(Sender: TObject);
 var
   dbGridColumns: Integer;
   thisQ : TSQLQuery;
-  thisMemo: TMemo;
+  activeTab: Integer;
+  thisDBGrid: TDBGrid;
 begin
-  DataModule1.SQ1.Edit;
-  DataModule1.SQ1.Post;
-  DataModule1.SQ1.ApplyUpdates(0);
+  activeTab := PageControl1.ActivePageIndex;
+  thisQ := TSQLQuery(DataModule1.FindComponent('SQ' + IntToStr(activeTab)));
+  thisDbGrid := TDBGrid(FindComponent('DBGrid' + IntToStr(activeTab)));
+  thisQ.Edit;
+  thisQ.Post;
+  thisQ.ApplyUpdates(0);
   DataModule1.SQLTransaction1.Commit;
-  DataModule1.SQ1.Active:= true;
-  for dbGridColumns := 0 to DBGrid1.Columns.Count - 1 do
-    DBGrid1.Columns[dbGridColumns].Width := 200;
+  thisQ.Active:= true;
+  for dbGridColumns := 0 to thisDbGrid.Columns.Count - 1 do
+    thisDbGrid.Columns[dbGridColumns].Width := 200;
   ApplyDateTimeDisplayFormats;
 end;
 
 procedure TMainApplicationForm.Button8Click(Sender: TObject);
+var
+  activeTab: Integer;
+  thisMemo: TMemo;
 begin
-  Memo1.Text := '';
+  activeTab := PageControl1.ActivePageIndex;
+  thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
+  thisMemo.Text := '';
 end;
 
 procedure TMainApplicationForm.CheckBox1Change(Sender: TObject);
@@ -357,7 +390,7 @@ begin
         end;
 
         JSONArray := TJSONArray(JSONData);
-        SetLength(FQueries, JSONArray.Count);
+        SetLength(FQueries, JSONArray.Count + 1);
         i := 0;
         while  i < JSONArray.Count do
         begin
@@ -377,7 +410,6 @@ begin
         // If the new query was not inserted, add it at the end
         if not Inserted then
         begin
-          i := i - 1;
           FQueries[i].QueryName := AQueryName;
           FQueries[i].SQL := ASQL;
         end;

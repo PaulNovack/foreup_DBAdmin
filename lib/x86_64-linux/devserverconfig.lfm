@@ -72,12 +72,22 @@ object DevelopmentServerConfigForm: TDevelopmentServerConfigForm
     Caption = 'Database'
   end
   object Button1: TButton
-    Left = 216
+    Left = 144
     Height = 25
     Top = 168
     Width = 75
-    Caption = 'Close'
+    Caption = 'Connect'
+    ModalResult = 1
     TabOrder = 4
     OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 266
+    Height = 25
+    Top = 168
+    Width = 75
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 5
   end
 end

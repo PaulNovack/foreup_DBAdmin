@@ -5,7 +5,7 @@ unit DevServerConfig;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fpjson, jsonparser;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fpjson, jsonparser,DataModule;
 
 type
 
@@ -13,6 +13,7 @@ type
 
   TDevelopmentServerConfigForm = class(TForm)
     Button1: TButton;
+    Button2: TButton;
     EditServerName: TEdit;
     EditUserName: TEdit;
     EditPassword: TEdit;
@@ -67,10 +68,17 @@ procedure TDevelopmentServerConfigForm.FormClose(Sender: TObject; var CloseActio
   finally
     JSONObject.Free;
   end;
+
 end;
 
 procedure TDevelopmentServerConfigForm.Button1Click(Sender: TObject);
 begin
+  DataModule.DataModule1.MySQL80Connection1.Connected := false;
+  DataModule.DataModule1.MySQL80Connection1.HostName := EditServerName.Text;
+  DataModule.DataModule1.MySQL80Connection1.DatabaseName := EditDatabase.Text;
+  DataModule.DataModule1.MySQL80Connection1.UserName := EditUserName.Text;
+  DataModule.DataModule1.MySQL80Connection1.Password := EditPassword.Text;
+  DataModule.DataModule1.MySQL80Connection1.Connected := true;
   DevelopmentServerConfigForm.Close;
 end;
 
