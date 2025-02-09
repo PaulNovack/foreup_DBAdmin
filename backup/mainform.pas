@@ -155,7 +155,19 @@ begin
   StringReplace(Query, ':courseId', CourseIdEdit.Text,
                                     [rfReplaceAll, rfIgnoreCase]);
   thisQ.SQL.Text := Query;
-  thisQ.Active := true;
+  try
+     thisQ.Active := true;
+  except
+    begin
+      on E: Exception do
+      begin
+        // Handle the error here. For example, show a message:
+        ShowMessage('SQL Error: ' + E.Message);
+        // Optionally, perform additional logging or cleanup here.
+      end;
+      Exit;
+    end;
+  end;
 
 
   for i := 0 to thisQ.FieldCount - 1 do
@@ -242,6 +254,8 @@ var
   thisMemo: TMemo;
   whereString: String;
 begin
+  activeTab := PageControl1.ActivePageIndex;
+  activeTab := activeTab + 1;
   whereString := 'where course_id = ' + ':courseId';
   thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
   thisMemo.Append(whereString);
@@ -255,6 +269,7 @@ var
   thisDBGrid: TDBGrid;
 begin
   activeTab := PageControl1.ActivePageIndex;
+  activeTab := activeTab + 1;
   thisQ := TSQLQuery(DataModule1.FindComponent('SQ' + IntToStr(activeTab)));
   thisDbGrid := TDBGrid(FindComponent('DBGrid' + IntToStr(activeTab)));
   thisQ.Edit;
@@ -273,6 +288,7 @@ var
   thisMemo: TMemo;
 begin
   activeTab := PageControl1.ActivePageIndex;
+  activeTab := activeTab + 1;
   thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
   thisMemo.Text := '';
 end;
@@ -309,7 +325,7 @@ begin
         begin
           if SaveQueryForm.Edit1.Text <> '' then
             begin
-              MainApplicationForm.AddQueryToFile('queries.json',SaveQueryForm.Edit1.Text,MainApplicationForm.Memo1.Text);
+              MainApplicationForm.AddQueryToFile('queries/queries.json',SaveQueryForm.Edit1.Text,MainApplicationForm.Memo1.Text);
             end
         end;
     end;

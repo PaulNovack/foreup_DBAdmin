@@ -126,7 +126,7 @@ procedure TListQuerysForm.Button3Click(Sender: TObject);
             SetLength(FQueries, JSONArray.Count - 1);
             i := 0;
             jindex := 0;
-            while i < JSONArray.Count - 2 do
+            while i < JSONArray.Count - 1 do
             begin
               if jindex <> selectedIndex then
               begin

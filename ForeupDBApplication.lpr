@@ -11,7 +11,7 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, MainForm, DevServerConfig, 
-ProductionServerConfig, DataModule, listtables, loadSqlStatements, 
+ProductionServerConfig, DataModule, listtables, loadSqlStatements,
 SaveQueryName
   { you can add units after this };
 
