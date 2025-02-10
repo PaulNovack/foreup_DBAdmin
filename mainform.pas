@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   Menus, ExtCtrls,DB, DBGrids, Buttons, DevServerConfig, ProductionServerConfig,
-  DataModule,ListTables,loadSqlStatements,SaveQueryName, fpjson, jsonparser,SQLdb;
+  DataModule,ListTables,loadSqlStatements,fpjson, jsonparser,SQLdb;
 
 type
   // A small record to hold each query's data
@@ -19,10 +19,14 @@ type
   { TMainApplicationForm }
 
   TMainApplicationForm = class(TForm)
+
+
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
+    QueryNameEdit: TEdit;
+    QueryNameLabel: TLabel;
     SelectButton: TButton;
     Button6: TButton;
     Button7: TButton;
@@ -41,7 +45,7 @@ type
     DBGrid9: TDBGrid;
     CourseIdEdit: TEdit;
     Label1: TLabel;
-    MainMenu1: TMainMenu;
+    MainApplicationMenu: TMainMenu;
     Memo1: TMemo;
     Memo10: TMemo;
     Memo2: TMemo;
@@ -70,6 +74,8 @@ type
     Splitter7: TSplitter;
     Splitter8: TSplitter;
     Splitter9: TSplitter;
+    SaveQueryButton: TToggleBox;
+    CancelSaveQueryButton: TToggleBox;
     TS1: TTabSheet;
     TS10: TTabSheet;
     TS2: TTabSheet;
@@ -85,9 +91,11 @@ type
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
+    procedure CancelSaveQueryButtonChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
+    procedure SaveQueryButtonChange(Sender: TObject);
     procedure SelectButtonClick(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
@@ -104,9 +112,9 @@ type
     function AddQueryToFile(const AFileName, AQueryName, ASQL: string): Boolean;
 
   private
-    FQueries: array of TQueryInfo;  // Dynamic array to hold all queries
+    FQueries: array of TQueryInfo;
   public
-
+    QuerySaveName: String;
   end;
 
 var
@@ -178,8 +186,8 @@ begin
   ApplyDateTimeDisplayFormats;
   SL := TStringList.Create;
   try
-    SL.Text := thisMemo.Text;  // Alternatively, use SL.Assign(Memo1.Lines);
-    SL.SaveToFile('queries/Query' + IntToStr(activeTab) + '.sql');
+    SL.Text := thisMemo.Text;
+    SL.SaveToFile('/Users/paulnovack/code/forupDBAdmin/queries/Query' + IntToStr(activeTab) + '.sql');
   finally
     SL.Free;
   end;
@@ -211,6 +219,15 @@ begin
 
 end;
 
+procedure TMainApplicationForm.CancelSaveQueryButtonChange(Sender: TObject);
+begin
+  QueryNameEdit.Text := '';
+  QueryNameEdit.Visible  := false;
+  SaveQueryButton.Visible := false;
+  CancelSaveQueryButton.visible := false;
+  QueryNameLabel.Visible := false;
+end;
+
 procedure TMainApplicationForm.FormCreate(Sender: TObject);
 var
   i: Integer;
@@ -219,7 +236,7 @@ var
 begin
   for i := 1 to 10 do
   begin
-    qFilename := 'queries/Query' + IntToStr(i) + '.sql';
+    qFilename := '/Users/paulnovack/code/forupDBAdmin/queries/Query' + IntToStr(i) + '.sql';
     if FileExists(qFilename) then
     begin
       memoControl := TMemo(FindComponent('Memo' + IntToStr(i)));
@@ -243,6 +260,25 @@ begin
 
 end;
 
+procedure TMainApplicationForm.SaveQueryButtonChange(Sender: TObject);
+var
+  activeTab: Integer;
+  thisMemo: TMemo;
+begin
+  activeTab := PageControl1.ActivePageIndex;
+  activeTab := activeTab + 1;
+  thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
+  if QueryNameEdit.Text <> '' then
+  begin
+    MainApplicationForm.AddQueryToFile('/Users/paulnovack/code/forupDBAdmin/repeatable/queries.json'
+      ,QueryNameEdit.Text ,thisMemo.Text);
+  end;
+  QueryNameEdit.Text := '';
+  QueryNameEdit.Visible  := false;
+  SaveQueryButton.Visible := false;
+  CancelSaveQueryButton.visible := false;
+  QueryNameLabel.Visible := false;
+end;
 
 
 procedure TMainApplicationForm.SelectButtonClick(Sender: TObject);
@@ -328,18 +364,16 @@ procedure TMainApplicationForm.MenuSaveRepeatableClick(Sender: TObject);
 var
   userChoice: TModalResult;
   return: Boolean;
+
 begin
-    SaveQueryForm.Edit1.Text:= '';
-    userChoice := SaveQueryForm.ShowModal;
-    case userChoice of
-      mrOk:
-        begin
-          if SaveQueryForm.Edit1.Text <> '' then
-            begin
-              MainApplicationForm.AddQueryToFile('repeatable/queries.json',SaveQueryForm.Edit1.Text,MainApplicationForm.Memo1.Text);
-            end
-        end;
-    end;
+  QueryNameEdit.Text := '';
+  QueryNameEdit.Visible  := true;
+  SaveQueryButton.Visible := true;
+  CancelSaveQueryButton.visible := true;
+  QueryNameLabel.Visible := true;
+
+
+
 end;
 
 procedure TMainApplicationForm.MenuItem6Click(Sender: TObject);

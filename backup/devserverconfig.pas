@@ -13,6 +13,7 @@ type
 
   TDevelopmentServerConfigForm = class(TForm)
     Button1: TButton;
+    Button2: TButton;
     EditServerName: TEdit;
     EditUserName: TEdit;
     EditPassword: TEdit;
@@ -60,23 +61,24 @@ procedure TDevelopmentServerConfigForm.FormClose(Sender: TObject; var CloseActio
     JSONString := TStringList.Create;
     try
       JSONString.Text := JSONObject.FormatJSON();  // Nicely formatted JSON
-      JSONString.SaveToFile('dev.json');
+      JSONString.SaveToFile('/Users/paulnovack/code/forupDBAdmin/configs/dev.json');
     finally
       JSONString.Free;
     end;
   finally
     JSONObject.Free;
   end;
+
+end;
+
+procedure TDevelopmentServerConfigForm.Button1Click(Sender: TObject);
+begin
   DataModule.DataModule1.MySQL80Connection1.Connected := false;
   DataModule.DataModule1.MySQL80Connection1.HostName := EditServerName.Text;
   DataModule.DataModule1.MySQL80Connection1.DatabaseName := EditDatabase.Text;
   DataModule.DataModule1.MySQL80Connection1.UserName := EditUserName.Text;
   DataModule.DataModule1.MySQL80Connection1.Password := EditPassword.Text;
   DataModule.DataModule1.MySQL80Connection1.Connected := true;
-end;
-
-procedure TDevelopmentServerConfigForm.Button1Click(Sender: TObject);
-begin
   DevelopmentServerConfigForm.Close;
 end;
 
@@ -93,14 +95,14 @@ procedure TDevelopmentServerConfigForm.FormShow(Sender: TObject);
   JSONParser: TJSONParser;
   FileStream: TFileStream;
 begin
-  if not FileExists('dev.json') then
+  if not FileExists('/Users/paulnovack/code/forupDBAdmin/configs/dev.json') then
   begin
     ShowMessage('dev.json not found! Enter your credentials and close form to save.');
     Exit;
   end;
 
   // Create a file stream and parser
-  FileStream := TFileStream.Create('dev.json', fmOpenRead or fmShareDenyNone);
+  FileStream := TFileStream.Create('/Users/paulnovack/code/forupDBAdmin/dev.json', fmOpenRead or fmShareDenyNone);
   try
     JSONParser := TJSONParser.Create(FileStream);
     try

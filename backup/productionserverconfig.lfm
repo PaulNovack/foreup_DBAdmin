@@ -1,7 +1,7 @@
 object ProductionServerConfgForm: TProductionServerConfgForm
-  Left = 2727
+  Left = 2304
   Height = 211
-  Top = 741
+  Top = 560
   Width = 509
   Caption = 'Production Server Configuration'
   ClientHeight = 211
@@ -71,12 +71,23 @@ object ProductionServerConfgForm: TProductionServerConfgForm
     Caption = 'Database'
   end
   object Button1: TButton
-    Left = 216
+    Left = 144
     Height = 25
     Top = 176
     Width = 75
-    Caption = 'Close'
+    Cancel = True
+    Caption = 'Connect'
+    ModalResult = 1
     TabOrder = 4
     OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 280
+    Height = 25
+    Top = 176
+    Width = 75
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 5
   end
 end

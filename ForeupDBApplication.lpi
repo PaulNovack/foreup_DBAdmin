@@ -13,6 +13,9 @@
       </XPManifest>
       <Icon Value="0"/>
     </General>
+    <MacroValues Count="1">
+      <Macro1 Name="LCLWidgetType" Value="cocoa"/>
+    </MacroValues>
     <BuildModes>
       <Item Name="Default" Default="True"/>
     </BuildModes>
@@ -93,14 +96,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="loadSqlStatements"/>
-      </Unit>
-      <Unit>
-        <Filename Value="savequeryname.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="SaveQueryForm"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="SaveQueryName"/>
       </Unit>
     </Units>
   </ProjectOptions>

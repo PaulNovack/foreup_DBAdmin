@@ -1,11 +1,12 @@
 object ListTablesForm: TListTablesForm
   Left = 1996
   Height = 895
-  Top = 246
+  Top = 157
   Width = 392
   Caption = 'Tables in Database'
   ClientHeight = 895
   ClientWidth = 392
+  OnShow = FormShow
   Position = poOwnerFormCenter
   LCLVersion = '3.8.0.0'
   object DBGrid1: TDBGrid

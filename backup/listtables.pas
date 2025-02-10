@@ -16,6 +16,7 @@ type
     DBGrid1: TDBGrid;
     procedure DBGrid1CellClick(Column: TColumn);
     procedure DBListBox1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
 
   public
@@ -39,9 +40,13 @@ begin
 
 end;
 
+procedure TListTablesForm.FormShow(Sender: TObject);
+begin
+  DataModule1.SchemaQ.Active := true;
+end;
+
 procedure TListTablesForm.DBGrid1CellClick(Column: TColumn);
 begin
-  //MainApplicationForm.Memo1.Append(DBGrid1.SelectedField.AsString);
   ListTablesForm.Close;
 end;
 

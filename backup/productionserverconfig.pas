@@ -13,6 +13,7 @@ type
 
   TProductionServerConfgForm = class(TForm)
     Button1: TButton;
+    Button2: TButton;
     EditDatabase: TEdit;
     EditPassword: TEdit;
     EditServerName: TEdit;

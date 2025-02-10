@@ -61,7 +61,7 @@ procedure TDevelopmentServerConfigForm.FormClose(Sender: TObject; var CloseActio
     JSONString := TStringList.Create;
     try
       JSONString.Text := JSONObject.FormatJSON();  // Nicely formatted JSON
-      JSONString.SaveToFile('dev.json');
+      JSONString.SaveToFile('/Users/paulnovack/code/forupDBAdmin/configs/dev.json');
     finally
       JSONString.Free;
     end;
@@ -95,14 +95,14 @@ procedure TDevelopmentServerConfigForm.FormShow(Sender: TObject);
   JSONParser: TJSONParser;
   FileStream: TFileStream;
 begin
-  if not FileExists('dev.json') then
+  if not FileExists('/Users/paulnovack/code/forupDBAdmin/configs/dev.json') then
   begin
     ShowMessage('dev.json not found! Enter your credentials and close form to save.');
     Exit;
   end;
 
   // Create a file stream and parser
-  FileStream := TFileStream.Create('dev.json', fmOpenRead or fmShareDenyNone);
+  FileStream := TFileStream.Create('/Users/paulnovack/code/forupDBAdmin/configs/dev.json', fmOpenRead or fmShareDenyNone);
   try
     JSONParser := TJSONParser.Create(FileStream);
     try

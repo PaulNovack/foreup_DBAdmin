@@ -51,7 +51,7 @@ implementation
 
 procedure TListQuerysForm.FormCreate(Sender: TObject);
 begin
-  queriesFilename := 'repeatable/queries.json';
+  queriesFilename := '/Users/paulnovack/code/forupDBAdmin/repeatable/queries.json';
   LoadQueriesFromJSON(queriesFilename);
   PopulateComboBox;
 end;
@@ -180,7 +180,7 @@ begin
     FileContent := TStringList.Create;
     try
       FileContent.Add('[]');
-      FileContent.SaveToFile(FileName);
+      FileContent.SaveToFile(queriesFilename);
     finally
       FileContent.Free;
     end;
