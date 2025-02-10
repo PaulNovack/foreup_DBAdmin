@@ -32,7 +32,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
-    FQueries: array of TQueryInfo;  // Dynamic array to hold all queries
+    FQueries: array of TQueryInfo;
     queriesFilename: String;
     procedure LoadQueriesFromJSON(const AFileName: string);
     procedure PopulateComboBox;
@@ -51,7 +51,7 @@ implementation
 
 procedure TListQuerysForm.FormCreate(Sender: TObject);
 begin
-  queriesFilename := 'configs/queries.json';
+  queriesFilename := 'repeatable/queries.json';
   LoadQueriesFromJSON(queriesFilename);
   PopulateComboBox;
 end;
@@ -173,11 +173,17 @@ var
   JSONParser: TJSONParser;
   fs: TFileStream;
   i: Integer;
+  FileContent: TStringList;
 begin
   if not FileExists(AFileName) then
   begin
-    ShowMessage('File not found: ' + AFileName);
-    Exit;
+    FileContent := TStringList.Create;
+    try
+      FileContent.Add('[]');
+      FileContent.SaveToFile(FileName);
+    finally
+      FileContent.Free;
+    end;
   end;
 
   fs := TFileStream.Create(AFileName, fmOpenRead or fmShareDenyNone);
@@ -192,10 +198,7 @@ begin
           ShowMessage('Invalid JSON format: expected an array.');
           Exit;
         end;
-
         JSONArray := TJSONArray(JSONData);
-
-        // Resize dynamic array to match the number of items
         SetLength(FQueries, JSONArray.Count);
 
         for i := 0 to JSONArray.Count - 1 do
@@ -204,7 +207,6 @@ begin
           FQueries[i].QueryName := JSONObject.Get('QueryName', '');
           FQueries[i].SQL := JSONObject.Get('SQL', '');
         end;
-
       finally
         JSONData.Free;
       end;

@@ -55,7 +55,7 @@ type
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
-    MenuItem5: TMenuItem;
+    MenuSaveRepeatable: TMenuItem;
     MenuItem6: TMenuItem;
     PageControl1: TPageControl;
     Panel1: TPanel;
@@ -96,7 +96,7 @@ type
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
-    procedure MenuItem5Click(Sender: TObject);
+    procedure MenuSaveRepeatableClick(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
     procedure RemoveLinesStartingWithLimit(AMemo: TMemo);
     procedure ApplyDateTimeDisplayFormats;
@@ -169,7 +169,6 @@ begin
   begin
     if thisQ.Fields[i].DataType in [ftMemo, ftWideMemo] then
     begin
-      // We define a single method that all memo fields share
       thisQ.Fields[i].OnGetText := @MemoFieldGetText;
     end;
   end;
@@ -220,7 +219,6 @@ var
 begin
   for i := 1 to 10 do
   begin
-
     qFilename := 'queries/Query' + IntToStr(i) + '.sql';
     if FileExists(qFilename) then
     begin
@@ -326,7 +324,7 @@ begin
   ProductionServerConfgForm.Show;
 end;
 
-procedure TMainApplicationForm.MenuItem5Click(Sender: TObject);
+procedure TMainApplicationForm.MenuSaveRepeatableClick(Sender: TObject);
 var
   userChoice: TModalResult;
   return: Boolean;
@@ -338,7 +336,7 @@ begin
         begin
           if SaveQueryForm.Edit1.Text <> '' then
             begin
-              MainApplicationForm.AddQueryToFile('repeatables/queries.json',SaveQueryForm.Edit1.Text,MainApplicationForm.Memo1.Text);
+              MainApplicationForm.AddQueryToFile('repeatable/queries.json',SaveQueryForm.Edit1.Text,MainApplicationForm.Memo1.Text);
             end
         end;
     end;
@@ -389,7 +387,8 @@ var
   JSONObject: TJSONObject;
   JSONParser: TJSONParser;
   fs: TFileStream;
-  i: Integer;
+  fquerysIdx: Integer;
+  jsonIdx: Integer;
   inserted: Boolean;
   queryName: String;
   SL: TStringList;
@@ -415,36 +414,41 @@ begin
 
         JSONArray := TJSONArray(JSONData);
         SetLength(FQueries, JSONArray.Count + 1);
-        i := 0;
-        while  i < JSONArray.Count do
+        fquerysIdx := 0;
+        jsonIdx := 0;
+        while  fquerysIdx < JSONArray.Count do
         begin
-          JSONObject := JSONArray.Objects[i];
+          JSONObject := JSONArray.Objects[jsonIdx];
           queryName := JSONObject.Get('QueryName', '');
           if (CompareText(AQueryName, queryName) < 0) and (Inserted = false) then
           begin
-            FQueries[i].QueryName := AQueryName;
-            FQueries[i].SQL := ASQL;
+            FQueries[fquerysIdx].QueryName := AQueryName;
+            FQueries[fquerysIdx].SQL := ASQL;
             Inserted := true;
-            i := i + 1;
+            fquerysIdx := fquerysIdx + 1;
+          end
+          else
+          begin
+            FQueries[fquerysIdx].QueryName := JSONObject.Get('QueryName', '');
+            FQueries[fquerysIdx].SQL := JSONObject.Get('SQL', '');
+            fquerysIdx := fquerysIdx + 1;
+            jsonIdx := jsonIdx + 1;
           end;
-          FQueries[i].QueryName := JSONObject.Get('QueryName', '');
-          FQueries[i].SQL := JSONObject.Get('SQL', '');
-          i := i + 1;
         end;
         if not Inserted then
         begin
-          FQueries[i].QueryName := AQueryName;
-          FQueries[i].SQL := ASQL;
+          FQueries[fquerysIdx].QueryName := AQueryName;
+          FQueries[fquerysIdx].SQL := ASQL;
         end;
       finally
         JSONData.Free;
       end;
       NEWJSONArray := TJSONArray.Create;
-      for i := 0 to High(FQueries) do
+      for fquerysIdx := 0 to High(FQueries) do
       begin
         JSONObject := TJSONObject.Create;
-        JSONObject.Add('QueryName', FQueries[i].QueryName);
-        JSONObject.Add('SQL', FQueries[i].SQL);
+        JSONObject.Add('QueryName', FQueries[fquerysIdx].QueryName);
+        JSONObject.Add('SQL', FQueries[fquerysIdx].SQL);
         NEWJSONARRAY.Add(JSONObject);
       end;
       fs.Free;

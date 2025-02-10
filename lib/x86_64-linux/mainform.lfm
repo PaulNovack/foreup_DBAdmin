@@ -589,9 +589,9 @@ object MainApplicationForm: TMainApplicationForm
         OnClick = MenuItem4Click
       end
     end
-    object MenuItem5: TMenuItem
+    object MenuSaveRepeatable: TMenuItem
       Caption = 'Save Query To Repeatable'
-      OnClick = MenuItem5Click
+      OnClick = MenuSaveRepeatableClick
     end
     object MenuItem6: TMenuItem
       Caption = 'Get Query From Repeatable'

@@ -55,7 +55,7 @@ type
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
-    MenuItem5: TMenuItem;
+    MenuSaveRepeatable: TMenuItem;
     MenuItem6: TMenuItem;
     PageControl1: TPageControl;
     Panel1: TPanel;
@@ -96,7 +96,7 @@ type
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
-    procedure MenuItem5Click(Sender: TObject);
+    procedure MenuSaveRepeatableClick(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
     procedure RemoveLinesStartingWithLimit(AMemo: TMemo);
     procedure ApplyDateTimeDisplayFormats;
@@ -169,7 +169,6 @@ begin
   begin
     if thisQ.Fields[i].DataType in [ftMemo, ftWideMemo] then
     begin
-      // We define a single method that all memo fields share
       thisQ.Fields[i].OnGetText := @MemoFieldGetText;
     end;
   end;
@@ -188,7 +187,7 @@ end;
 
 procedure TMainApplicationForm.MemoFieldGetText(Sender: TField; var aText: string; DisplayText: Boolean);
 begin
-  aText := Sender.AsString;  // So that the grid shows the real text, not "(Memo)"
+  aText := Sender.AsString;
 end;
 
 procedure TMainApplicationForm.Button4Click(Sender: TObject);
@@ -220,15 +219,12 @@ var
 begin
   for i := 1 to 10 do
   begin
-    // Construct the file name, for example: queries/Query1.sql, Query2.sql, etc.
     qFilename := 'queries/Query' + IntToStr(i) + '.sql';
     if FileExists(qFilename) then
     begin
-      // Find the memo component by name on the form
       memoControl := TMemo(FindComponent('Memo' + IntToStr(i)));
       if Assigned(memoControl) then
       begin
-        // Load the file contents into the memo
         memoControl.Lines.LoadFromFile(qFilename);
       end
       else
@@ -328,19 +324,19 @@ begin
   ProductionServerConfgForm.Show;
 end;
 
-procedure TMainApplicationForm.MenuItem5Click(Sender: TObject);
+procedure TMainApplicationForm.MenuSaveRepeatableClick(Sender: TObject);
 var
   userChoice: TModalResult;
   return: Boolean;
 begin
     SaveQueryForm.Edit1.Text:= '';
-    userChoice := SaveQueryForm.ShowModal;  // This line blocks until Form2 is closed
+    userChoice := SaveQueryForm.ShowModal;
     case userChoice of
       mrOk:
         begin
           if SaveQueryForm.Edit1.Text <> '' then
             begin
-              MainApplicationForm.AddQueryToFile('queries/queries.json',SaveQueryForm.Edit1.Text,MainApplicationForm.Memo1.Text);
+              MainApplicationForm.AddQueryToFile('repeatable/queries.json',SaveQueryForm.Edit1.Text,MainApplicationForm.Memo1.Text);
             end
         end;
     end;
@@ -370,14 +366,10 @@ begin
     for i := 0 to AMemo.Lines.Count - 1 do
     begin
       CurrentLine := AMemo.Lines[i];
-
-      // Check if the line starts with "Limit"
-      // (case-sensitive; if you need case-insensitive use StrUtils.StartsText)
       if Copy(CurrentLine, 1, 5) <> 'Limit' then
       begin
         TempList.Add(CurrentLine);
       end;
-      // else we skip adding it (thus removing lines that start with "Limit")
     end;
     AMemo.Lines.Assign(TempList);
   finally
@@ -395,7 +387,8 @@ var
   JSONObject: TJSONObject;
   JSONParser: TJSONParser;
   fs: TFileStream;
-  i: Integer;
+  fquerysIdx: Integer;
+  jsonIdx: Integer;
   inserted: Boolean;
   queryName: String;
   SL: TStringList;
@@ -413,7 +406,6 @@ begin
     try
       JSONData := JSONParser.Parse;
       try
-        // Expect an array of objects
         if not (JSONData is TJSONArray) then
         begin
           ShowMessage('Invalid JSON format: expected an array.');
@@ -422,47 +414,50 @@ begin
 
         JSONArray := TJSONArray(JSONData);
         SetLength(FQueries, JSONArray.Count + 1);
-        i := 0;
-        while  i < JSONArray.Count do
+        fquerysIdx := 0;
+        jsonIdx := 0;
+        while  fquerysIdx < JSONArray.Count do
         begin
-          JSONObject := JSONArray.Objects[i];
+          JSONObject := JSONArray.Objects[jsonIdx];
           queryName := JSONObject.Get('QueryName', '');
           if (CompareText(AQueryName, queryName) < 0) and (Inserted = false) then
           begin
-            FQueries[i].QueryName := AQueryName;
-            FQueries[i].SQL := ASQL;
+            FQueries[fquerysIdx].QueryName := AQueryName;
+            FQueries[fquerysIdx].SQL := ASQL;
             Inserted := true;
-            i := i + 1;
+            fquerysIdx := fquerysIdx + 1;
+          end
+          else
+          begin
+            FQueries[fquerysIdx].QueryName := JSONObject.Get('QueryName', '');
+            FQueries[fquerysIdx].SQL := JSONObject.Get('SQL', '');
+            fquerysIdx := fquerysIdx + 1;
+            jsonIdx := jsonIdx + 1;
           end;
-          FQueries[i].QueryName := JSONObject.Get('QueryName', '');
-          FQueries[i].SQL := JSONObject.Get('SQL', '');
-          i := i + 1;
+          end;
         end;
-        // If the new query was not inserted, add it at the end
         if not Inserted then
         begin
-          FQueries[i].QueryName := AQueryName;
-          FQueries[i].SQL := ASQL;
+          FQueries[fquerysIdx].QueryName := AQueryName;
+          FQueries[fquerysIdx].SQL := ASQL;
         end;
       finally
         JSONData.Free;
       end;
-      // Convert FQueries back to a TJSONArray
       NEWJSONArray := TJSONArray.Create;
-      for i := 0 to High(FQueries) do
+      for fquerysIdx := 0 to High(FQueries) do
       begin
         JSONObject := TJSONObject.Create;
-        JSONObject.Add('QueryName', FQueries[i].QueryName);
-        JSONObject.Add('SQL', FQueries[i].SQL);
+        JSONObject.Add('QueryName', FQueries[fquerysIdx].QueryName);
+        JSONObject.Add('SQL', FQueries[fquerysIdx].SQL);
         NEWJSONARRAY.Add(JSONObject);
       end;
       fs.Free;
-      // Write the JSONArray back to the file
       SL := TStringList.Create;
       try
         SL.Text := NEWJSONARRAY.FormatJSON();
         SL.SaveToFile(AFileName);
-        Result := True; // Success
+        Result := True;
       finally
         SL.Free;
       end;
@@ -478,36 +473,27 @@ var
   ADBGrid: TDBGrid;
   AField: TField;
 begin
-  // Loop over every component in the form
   for i := 0 to Self.ComponentCount - 1 do
   begin
-    // Check if the component is a TDBGrid
     if Components[i] is TDBGrid then
     begin
       ADBGrid := TDBGrid(Components[i]);
-
-      // Iterate over each column in the grid
       for j := 0 to ADBGrid.Columns.Count - 1 do
       begin
         AField := ADBGrid.Columns[j].Field;
         if Assigned(AField) then
         begin
-          // Check if the field is a date/time type
-          // Typical classes: TDateTimeField, TSQLTimeStampField, TDateField, TTimeField
           if (AField is TDateTimeField) then
           begin
-            // Cast and set the display format
             TDateTimeField(AField).DisplayFormat := 'yyyy-mm-dd hh:nn:ss';
             ADBGrid.Columns[j].Width := 140;
           end;
           if (AField is TLargeintField) then
           begin
-            // Cast and set the display format
             ADBGrid.Columns[j].Width := 60;
           end;
           if (AField is TLongintField) then
           begin
-            // Cast and set the display format
             ADBGrid.Columns[j].Width := 70;
           end;
         end;
