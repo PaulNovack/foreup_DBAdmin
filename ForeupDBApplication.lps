@@ -9,7 +9,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
         <CursorPos X="47" Y="14"/>
-        <UsageCount Value="31"/>
+        <UsageCount Value="32"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -19,9 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
-        <TopLine Value="155"/>
-        <CursorPos Y="162"/>
-        <UsageCount Value="31"/>
+        <TopLine Value="295"/>
+        <CursorPos Y="309"/>
+        <UsageCount Value="32"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -32,12 +32,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DevServerConfig"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="70"/>
         <CursorPos Y="71"/>
-        <UsageCount Value="31"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="32"/>
       </Unit>
       <Unit>
         <Filename Value="productionserverconfig.pas"/>
@@ -46,18 +44,16 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ProductionServerConfig"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="48" Y="20"/>
-        <UsageCount Value="31"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="32"/>
       </Unit>
       <Unit>
         <Filename Value="dev.json"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="27"/>
-        <UsageCount Value="31"/>
+        <UsageCount Value="32"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
       <Unit>
@@ -67,12 +63,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="DataModule"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="43"/>
         <CursorPos Y="61"/>
-        <UsageCount Value="31"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="32"/>
       </Unit>
       <Unit>
         <Filename Value="listtables.pas"/>
@@ -80,10 +74,9 @@
         <ComponentName Value="ListTablesForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="29"/>
-        <CursorPos Y="49"/>
-        <UsageCount Value="29"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="39" Y="37"/>
+        <UsageCount Value="30"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -91,7 +84,7 @@
         <Filename Value="queries.json"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="25"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
       <Unit>
@@ -101,10 +94,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="loadSqlStatements"/>
-        <EditorIndex Value="10"/>
-        <TopLine Value="215"/>
-        <CursorPos X="40" Y="164"/>
-        <UsageCount Value="24"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="89"/>
+        <CursorPos Y="102"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -118,7 +111,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="11"/>
         <CursorPos X="3" Y="37"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="25"/>
       </Unit>
       <Unit>
         <Filename Value="unit3.lfm"/>
@@ -134,9 +127,10 @@
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/include/control.inc"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="3605"/>
-        <CursorPos Y="3612"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="2965"/>
+        <CursorPos Y="2976"/>
         <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit>
@@ -186,11 +180,10 @@
       <Unit>
         <Filename Value="/usr/share/fpcsrc/3.2.2/packages/fcl-db/src/base/db.pas"/>
         <UnitName Value="DB"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="560"/>
         <CursorPos X="16" Y="565"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/inc/systemh.inc"/>
@@ -201,11 +194,10 @@
       </Unit>
       <Unit>
         <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/objpas/classes/lists.inc"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="795"/>
         <CursorPos X="17" Y="810"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/include/menuitem.inc"/>
@@ -231,8 +223,7 @@
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/lresources.pp"/>
         <UnitName Value="LResources"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="3154"/>
         <CursorPos Y="3164"/>
         <UsageCount Value="10"/>
@@ -240,82 +231,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="loadsqlstatements.pas"/>
-        <Caret Line="115" TopLine="102"/>
-      </Position>
-      <Position>
-        <Filename Value="loadsqlstatements.pas"/>
-        <Caret Line="116" TopLine="102"/>
-      </Position>
-      <Position>
-        <Filename Value="loadsqlstatements.pas"/>
-        <Caret Line="117" TopLine="102"/>
-      </Position>
-      <Position>
-        <Filename Value="loadsqlstatements.pas"/>
-        <Caret Line="119" TopLine="103"/>
-      </Position>
-      <Position>
-        <Filename Value="loadsqlstatements.pas"/>
-        <Caret Line="124" TopLine="114"/>
-      </Position>
-      <Position>
-        <Filename Value="loadsqlstatements.pas"/>
-        <Caret Line="126" TopLine="114"/>
-      </Position>
-      <Position>
-        <Filename Value="loadsqlstatements.pas"/>
-        <Caret Line="127" TopLine="114"/>
-      </Position>
-      <Position>
-        <Filename Value="loadsqlstatements.pas"/>
-        <Caret Line="128" TopLine="114"/>
-      </Position>
-      <Position>
-        <Filename Value="loadsqlstatements.pas"/>
-        <Caret Line="129" Column="42" TopLine="114"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="392" TopLine="382"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="312" Column="59" TopLine="296"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="275" TopLine="267"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="276" TopLine="267"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="277" TopLine="267"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="246" TopLine="244"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="276" Column="75" TopLine="269"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="275" TopLine="269"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="258" Column="30" TopLine="287"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="143" Column="3" TopLine="131"/>
-      </Position>
       <Position>
         <Filename Value="mainform.pas"/>
         <Caret Line="257" Column="3" TopLine="250"/>
@@ -360,6 +275,82 @@
         <Filename Value="listtables.pas"/>
         <Caret Line="49" TopLine="29"/>
       </Position>
+      <Position>
+        <Filename Value="/usr/share/lazarus/3.8.0/lcl/lresources.pp"/>
+        <Caret Line="3164" TopLine="3154"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="162" TopLine="140"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="21" Column="8" TopLine="91"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="10" Column="28"/>
+      </Position>
+      <Position>
+        <Filename Value="loadsqlstatements.pas"/>
+        <Caret Line="164" Column="40" TopLine="164"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="219" Column="8" TopLine="299"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="10" Column="28"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="217" Column="12" TopLine="215"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="183" Column="5" TopLine="171"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="10" Column="28"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="226" Column="10" TopLine="215"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="11" Column="26"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="222" Column="56" TopLine="212"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="237" Column="7" TopLine="212"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="305" TopLine="295"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="306" TopLine="295"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="307" TopLine="295"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="308" TopLine="295"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="309" TopLine="295"/>
+      </Position>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
@@ -373,21 +364,21 @@
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="mainform.pas"/>
-        <Line Value="372"/>
+        <Line Value="392"/>
       </Item>
       <Item>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="mainform.pas"/>
-        <Line Value="423"/>
+        <Line Value="443"/>
       </Item>
       <Item>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="mainform.pas"/>
-        <Line Value="285"/>
+        <Line Value="305"/>
       </Item>
     </BreakPoints>
     <Watches>

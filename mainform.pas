@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   Menus, ExtCtrls,DB, DBGrids, Buttons, DevServerConfig, ProductionServerConfig,
-  DataModule,listtables,loadSqlStatements,SaveQueryName, fpjson, jsonparser,SQLdb;
+  DataModule,ListTables,loadSqlStatements,SaveQueryName, fpjson, jsonparser,SQLdb;
 
 type
   // A small record to hold each query's data
@@ -213,8 +213,28 @@ begin
 end;
 
 procedure TMainApplicationForm.FormCreate(Sender: TObject);
+var
+  i: Integer;
+  qFilename: string;
+  memoControl: TMemo;
 begin
-
+  for i := 1 to 10 do
+  begin
+    // Construct the file name, for example: queries/Query1.sql, Query2.sql, etc.
+    qFilename := 'queries/Query' + IntToStr(i) + '.sql';
+    if FileExists(qFilename) then
+    begin
+      // Find the memo component by name on the form
+      memoControl := TMemo(FindComponent('Memo' + IntToStr(i)));
+      if Assigned(memoControl) then
+      begin
+        // Load the file contents into the memo
+        memoControl.Lines.LoadFromFile(qFilename);
+      end
+      else
+        ShowMessage('Component Memo' + IntToStr(i) + ' not found.');
+    end;
+  end;
 end;
 
 procedure TMainApplicationForm.PageControl1Change(Sender: TObject);

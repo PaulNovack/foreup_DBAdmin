@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   Menus, ExtCtrls,DB, DBGrids, Buttons, DevServerConfig, ProductionServerConfig,
-  DataModule,listtables,loadSqlStatements,SaveQueryName, fpjson, jsonparser,SQLdb;
+  DataModule,ListTables,loadSqlStatements,SaveQueryName, fpjson, jsonparser,SQLdb;
 
 type
   // A small record to hold each query's data
@@ -158,17 +158,12 @@ begin
   try
      thisQ.Active := true;
   except
-    begin
       on E: Exception do
       begin
-        // Handle the error here. For example, show a message:
         ShowMessage('SQL Error: ' + E.Message);
-        // Optionally, perform additional logging or cleanup here.
+        Exit;
       end;
-      Exit;
-    end;
   end;
-
 
   for i := 0 to thisQ.FieldCount - 1 do
   begin
@@ -218,8 +213,18 @@ begin
 end;
 
 procedure TMainApplicationForm.FormCreate(Sender: TObject);
+var
+  qFilename: String;
+  i: Integer;
 begin
-
+  for i := 1 to 10 do
+  begin
+    qFilename := 'queries/Query' + IntToStr(i) + '.sql';
+    if FileExists(qFilename) then
+    begin
+         SL.SaveToFile('queries/Query' + IntToStr(activeTab) + '.sql');
+    end;
+  end;
 end;
 
 procedure TMainApplicationForm.PageControl1Change(Sender: TObject);

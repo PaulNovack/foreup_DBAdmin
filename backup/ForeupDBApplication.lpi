@@ -81,7 +81,6 @@
         <ComponentName Value="ListTablesForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="ListTablesForm"/>
       </Unit>
       <Unit>
         <Filename Value="queries.json"/>
