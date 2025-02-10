@@ -33,7 +33,7 @@ type
     procedure FormShow(Sender: TObject);
   private
     FQueries: array of TQueryInfo;  // Dynamic array to hold all queries
-
+    queriesFilename: String;
     procedure LoadQueriesFromJSON(const AFileName: string);
     procedure PopulateComboBox;
   public
@@ -51,13 +51,14 @@ implementation
 
 procedure TListQuerysForm.FormCreate(Sender: TObject);
 begin
-  LoadQueriesFromJSON('queries.json');
+  queriesFilename := 'configs/queries.json';
+  LoadQueriesFromJSON(queriesFilename);
   PopulateComboBox;
 end;
 
 procedure TListQuerysForm.FormShow(Sender: TObject);
 begin
-  LoadQueriesFromJSON('queries.json');
+  LoadQueriesFromJSON(queriesFilename);
   PopulateComboBox;
 end;
 
@@ -96,7 +97,7 @@ procedure TListQuerysForm.Button3Click(Sender: TObject);
     AFileName: string;
     SL: TStringList;
   begin
-    AFileName := 'queries.json';
+    AFileName := queriesFilename;
     selectedIndex := ComboBox1.ItemIndex;
     if not FileExists(AFileName) then
     begin
@@ -160,7 +161,7 @@ procedure TListQuerysForm.Button3Click(Sender: TObject);
     SL := TStringList.Create;
     SL.Text := NEWJSONARRAY.FormatJSON();
     SL.SaveToFile(AFileName);
-    LoadQueriesFromJSON('queries.json');
+    LoadQueriesFromJSON(queriesFilename);
     PopulateComboBox;
 end;
 

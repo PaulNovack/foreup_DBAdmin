@@ -32,7 +32,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
-    FQueries: array of TQueryInfo;  // Dynamic array to hold all queries
+    FQueries: array of TQueryInfo;
     queriesFilename: String;
     procedure LoadQueriesFromJSON(const AFileName: string);
     procedure PopulateComboBox;
@@ -51,7 +51,7 @@ implementation
 
 procedure TListQuerysForm.FormCreate(Sender: TObject);
 begin
-  queriesFilename := 'queries/queries.json';
+  queriesFilename := 'repeatables/queries.json';
   LoadQueriesFromJSON(queriesFilename);
   PopulateComboBox;
 end;

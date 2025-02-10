@@ -214,15 +214,25 @@ end;
 
 procedure TMainApplicationForm.FormCreate(Sender: TObject);
 var
-  qFilename: String;
   i: Integer;
+  qFilename: string;
+  memoControl: TMemo;
 begin
   for i := 1 to 10 do
   begin
+    // Construct the file name, for example: queries/Query1.sql, Query2.sql, etc.
     qFilename := 'queries/Query' + IntToStr(i) + '.sql';
     if FileExists(qFilename) then
     begin
-         SL.SaveToFile('queries/Query' + IntToStr(activeTab) + '.sql');
+      // Find the memo component by name on the form
+      memoControl := TMemo(FindComponent('Memo' + IntToStr(i)));
+      if Assigned(memoControl) then
+      begin
+        // Load the file contents into the memo
+        memoControl.Lines.LoadFromFile(qFilename);
+      end
+      else
+        ShowMessage('Component Memo' + IntToStr(i) + ' not found.');
     end;
   end;
 end;
@@ -340,7 +350,7 @@ procedure TMainApplicationForm.MenuItem6Click(Sender: TObject);
 var
   userChoice: TModalResult;
 begin
-    userChoice := ListQuerysForm.ShowModal;  // This line blocks until Form2 is closed
+    userChoice := ListQuerysForm.ShowModal;
     case userChoice of
       mrOk:
         begin

@@ -41,7 +41,6 @@ end;
 
 procedure TListTablesForm.DBGrid1CellClick(Column: TColumn);
 begin
-  //MainApplicationForm.Memo1.Append(DBGrid1.SelectedField.AsString);
   ListTablesForm.Close;
 end;
 

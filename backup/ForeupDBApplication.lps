@@ -9,7 +9,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
         <CursorPos X="47" Y="14"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -20,9 +20,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="295"/>
-        <CursorPos Y="305"/>
-        <UsageCount Value="34"/>
+        <TopLine Value="483"/>
+        <CursorPos X="16" Y="491"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -36,7 +36,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="70"/>
         <CursorPos Y="71"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="60"/>
       </Unit>
       <Unit>
         <Filename Value="productionserverconfig.pas"/>
@@ -47,14 +47,14 @@
         <UnitName Value="ProductionServerConfig"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="48" Y="20"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="60"/>
       </Unit>
       <Unit>
         <Filename Value="dev.json"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="27"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="60"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
       <Unit>
@@ -67,7 +67,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="43"/>
         <CursorPos Y="61"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="60"/>
       </Unit>
       <Unit>
         <Filename Value="listtables.pas"/>
@@ -76,8 +76,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="3"/>
-        <CursorPos X="39" Y="37"/>
-        <UsageCount Value="32"/>
+        <TopLine Value="28"/>
+        <CursorPos X="6" Y="43"/>
+        <UsageCount Value="58"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -85,7 +86,7 @@
         <Filename Value="queries.json"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="27"/>
+        <UsageCount Value="53"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
       <Unit>
@@ -96,9 +97,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="loadSqlStatements"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="89"/>
-        <CursorPos Y="102"/>
-        <UsageCount Value="27"/>
+        <TopLine Value="215"/>
+        <CursorPos X="34" Y="54"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -112,26 +113,26 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="11"/>
         <CursorPos X="3" Y="37"/>
-        <UsageCount Value="27"/>
+        <UsageCount Value="53"/>
       </Unit>
       <Unit>
         <Filename Value="unit3.lfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="7"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.lfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/include/control.inc"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="2965"/>
         <CursorPos Y="2976"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -139,20 +140,20 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="29"/>
         <CursorPos Y="44"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
       </Unit>
       <Unit>
         <Filename Value="unit5.lfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="37" Y="16"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="7"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
         <Filename Value="unit4.lfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="21"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="7"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
@@ -160,21 +161,21 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="908"/>
         <CursorPos Y="923"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="7"/>
       </Unit>
       <Unit>
         <Filename Value="listtables.lfm"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos X="4" Y="24"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="7"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
         <Filename Value="mainform.lfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="27" Y="5"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="7"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
@@ -183,58 +184,62 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="560"/>
         <CursorPos X="16" Y="565"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="9"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/inc/systemh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="478"/>
         <CursorPos X="3" Y="472"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="7"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/objpas/classes/lists.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="795"/>
         <CursorPos X="17" Y="810"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="9"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/include/menuitem.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="75"/>
         <CursorPos Y="85"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="9"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/include/buttoncontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="28"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="8"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/include/buttons.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="159"/>
         <CursorPos Y="170"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="8"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/lresources.pp"/>
         <UnitName Value="LResources"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="3154"/>
         <CursorPos Y="3164"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="24"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/3.8.0/lcl/forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="2359"/>
+        <CursorPos Y="2370"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="276" Column="3" TopLine="271"/>
-      </Position>
+    <JumpHistory HistoryIndex="28">
       <Position>
         <Filename Value="mainform.pas"/>
         <Caret Line="245" Column="3" TopLine="238"/>
@@ -270,10 +275,6 @@
       <Position>
         <Filename Value="listtables.pas"/>
         <Caret Line="49" TopLine="29"/>
-      </Position>
-      <Position>
-        <Filename Value="/usr/share/lazarus/3.8.0/lcl/lresources.pp"/>
-        <Caret Line="3164" TopLine="3154"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
@@ -351,6 +352,10 @@
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/include/control.inc"/>
         <Caret Line="2976" TopLine="2965"/>
       </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="306" TopLine="295"/>
+      </Position>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
@@ -364,21 +369,14 @@
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="mainform.pas"/>
-        <Line Value="392"/>
+        <Line Value="386"/>
       </Item>
       <Item>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="mainform.pas"/>
-        <Line Value="443"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="mainform.pas"/>
-        <Line Value="305"/>
+        <Line Value="435"/>
       </Item>
     </BreakPoints>
     <Watches>
