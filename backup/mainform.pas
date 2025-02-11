@@ -115,7 +115,7 @@ type
     FQueries: array of TQueryInfo;
   public
     QuerySaveName: String;
-    exeDir: string;
+    exeDir: String;
   end;
 
 var
@@ -188,7 +188,7 @@ begin
   SL := TStringList.Create;
   try
     SL.Text := thisMemo.Text;
-    SL.SaveToFile(MainApplicationForm.exeDir + 'queries/Query' + IntToStr(activeTab) + '.sql');
+    SL.SaveToFile(exeDir + 'queries/Query' + IntToStr(activeTab) + '.sql');
   finally
     SL.Free;
   end;
@@ -235,7 +235,7 @@ var
   qFilename: string;
   memoControl: TMemo;
 begin
-  exeDir := ExtractFilePath(ParamStr(0));
+   exeDir := ExpandFileName(ExtractFilePath(ParamStr(0)) + '../../');
   for i := 1 to 10 do
   begin
     qFilename := exeDir + 'queries/Query' + IntToStr(i) + '.sql';
@@ -272,7 +272,7 @@ begin
   thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
   if QueryNameEdit.Text <> '' then
   begin
-    MainApplicationForm.AddQueryToFile(MainApplicationForm.exeDir + 'repeatable/queries.json'
+    MainApplicationForm.AddQueryToFile(exeDir + 'repeatable/queries.json'
       ,QueryNameEdit.Text ,thisMemo.Text);
   end;
   QueryNameEdit.Text := '';

@@ -116,14 +116,14 @@ procedure TListQuerysForm.Button3Click(Sender: TObject);
       try
           JSONData := JSONParser.Parse;
           try
-            // Expect an array of objects
+
             if not (JSONData is TJSONArray) then
             begin
               ShowMessage('Invalid JSON format: expected an array.');
               Exit;
             end;
             JSONArray := TJSONArray(JSONData);
-            // Resize dynamic array to match the number of items
+
             SetLength(FQueries, JSONArray.Count - 1);
             i := 0;
             jindex := 0;
@@ -148,7 +148,7 @@ procedure TListQuerysForm.Button3Click(Sender: TObject);
     finally
       fs.free;
     end;
-          // Convert FQueries back to a TJSONArray
+
     NEWJSONArray := TJSONArray.Create;
     for i := 0 to High(FQueries) do
     begin
@@ -157,7 +157,7 @@ procedure TListQuerysForm.Button3Click(Sender: TObject);
       JSONObject.Add('SQL', FQueries[i].SQL);
       NEWJSONARRAY.Add(JSONObject);
     end;
-    // Write the JSONArray back to the file
+
     SL := TStringList.Create;
     SL.Text := NEWJSONARRAY.FormatJSON();
     SL.SaveToFile(AFileName);
@@ -192,7 +192,7 @@ begin
     try
       JSONData := JSONParser.Parse;
       try
-        // Expect an array of objects
+
         if not (JSONData is TJSONArray) then
         begin
           ShowMessage('Invalid JSON format: expected an array.');

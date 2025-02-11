@@ -1,11 +1,11 @@
 object MainApplicationForm: TMainApplicationForm
-  Left = 1921
-  Height = 1027
-  Top = 60
-  Width = 1380
+  Left = 1961
+  Height = 813
+  Top = 239
+  Width = 1321
   Caption = 'ForeUp Database Application'
-  ClientHeight = 1027
-  ClientWidth = 1380
+  ClientHeight = 813
+  ClientWidth = 1321
   Menu = MainApplicationMenu
   OnCreate = FormCreate
   Position = poWorkAreaCenter
@@ -36,9 +36,9 @@ object MainApplicationForm: TMainApplicationForm
     AnchorSideRight.Control = Owner
     AnchorSideBottom.Control = Owner
     Left = 0
-    Height = 927
+    Height = 713
     Top = 100
-    Width = 1380
+    Width = 1321
     ActivePage = TS1
     Align = alBottom
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -47,8 +47,8 @@ object MainApplicationForm: TMainApplicationForm
     OnChange = PageControl1Change
     object TS1: TTabSheet
       Caption = 'Query 1'
-      ClientHeight = 891
-      ClientWidth = 1374
+      ClientHeight = 677
+      ClientWidth = 1315
       object Memo1: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1
@@ -57,7 +57,7 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 225
         Top = 0
-        Width = 1374
+        Width = 1315
         Align = alTop
         Anchors = []
         Font.Height = -16
@@ -67,9 +67,9 @@ object MainApplicationForm: TMainApplicationForm
       end
       object DBGrid1: TDBGrid
         Left = 0
-        Height = 657
+        Height = 443
         Top = 234
-        Width = 1374
+        Width = 1315
         Align = alClient
         Anchors = []
         Color = clWindow
@@ -86,15 +86,15 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 9
         Top = 225
-        Width = 1374
+        Width = 1315
         Align = alTop
         ResizeAnchor = akTop
       end
     end
     object TS2: TTabSheet
       Caption = 'Query 2'
-      ClientHeight = 891
-      ClientWidth = 1374
+      ClientHeight = 677
+      ClientWidth = 1315
       object Memo2: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1
@@ -103,16 +103,16 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 225
         Top = 0
-        Width = 1374
+        Width = 1315
         Align = alTop
         Anchors = []
         TabOrder = 0
       end
       object DBGrid2: TDBGrid
         Left = 0
-        Height = 657
+        Height = 443
         Top = 234
-        Width = 1374
+        Width = 1315
         Align = alClient
         Anchors = []
         Color = clWindow
@@ -128,15 +128,15 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 9
         Top = 225
-        Width = 1374
+        Width = 1315
         Align = alTop
         ResizeAnchor = akTop
       end
     end
     object TS3: TTabSheet
       Caption = 'Query 3'
-      ClientHeight = 891
-      ClientWidth = 1374
+      ClientHeight = 677
+      ClientWidth = 1315
       object Memo3: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1
@@ -145,16 +145,16 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 225
         Top = 0
-        Width = 1374
+        Width = 1315
         Align = alTop
         Anchors = []
         TabOrder = 0
       end
       object DBGrid3: TDBGrid
         Left = 0
-        Height = 657
+        Height = 443
         Top = 234
-        Width = 1374
+        Width = 1315
         Align = alClient
         Anchors = []
         Color = clWindow
@@ -170,15 +170,15 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 9
         Top = 225
-        Width = 1374
+        Width = 1315
         Align = alTop
         ResizeAnchor = akTop
       end
     end
     object TS4: TTabSheet
       Caption = 'Query 4'
-      ClientHeight = 891
-      ClientWidth = 1374
+      ClientHeight = 677
+      ClientWidth = 1315
       object Memo4: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1
@@ -187,16 +187,16 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 225
         Top = 0
-        Width = 1374
+        Width = 1315
         Align = alTop
         Anchors = []
         TabOrder = 0
       end
       object DBGrid4: TDBGrid
         Left = 0
-        Height = 657
+        Height = 443
         Top = 234
-        Width = 1374
+        Width = 1315
         Align = alClient
         Anchors = []
         Color = clWindow
@@ -212,15 +212,15 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 9
         Top = 225
-        Width = 1374
+        Width = 1315
         Align = alTop
         ResizeAnchor = akTop
       end
     end
     object TS5: TTabSheet
       Caption = 'Query 5'
-      ClientHeight = 891
-      ClientWidth = 1374
+      ClientHeight = 677
+      ClientWidth = 1315
       object Memo5: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1
@@ -229,16 +229,16 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 225
         Top = 0
-        Width = 1374
+        Width = 1315
         Align = alTop
         Anchors = []
         TabOrder = 0
       end
       object DBGrid5: TDBGrid
         Left = 0
-        Height = 657
+        Height = 443
         Top = 234
-        Width = 1374
+        Width = 1315
         Align = alClient
         Anchors = []
         Color = clWindow
@@ -254,15 +254,15 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 9
         Top = 225
-        Width = 1374
+        Width = 1315
         Align = alTop
         ResizeAnchor = akTop
       end
     end
     object TS6: TTabSheet
       Caption = 'Query 6'
-      ClientHeight = 891
-      ClientWidth = 1374
+      ClientHeight = 677
+      ClientWidth = 1315
       object Memo6: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1
@@ -271,16 +271,16 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 225
         Top = 0
-        Width = 1374
+        Width = 1315
         Align = alTop
         Anchors = []
         TabOrder = 0
       end
       object DBGrid6: TDBGrid
         Left = 0
-        Height = 657
+        Height = 443
         Top = 234
-        Width = 1374
+        Width = 1315
         Align = alClient
         Anchors = []
         Color = clWindow
@@ -296,15 +296,15 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 9
         Top = 225
-        Width = 1374
+        Width = 1315
         Align = alTop
         ResizeAnchor = akTop
       end
     end
     object TS7: TTabSheet
       Caption = 'Query 7'
-      ClientHeight = 891
-      ClientWidth = 1374
+      ClientHeight = 677
+      ClientWidth = 1315
       object Memo7: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1
@@ -313,16 +313,16 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 225
         Top = 0
-        Width = 1374
+        Width = 1315
         Align = alTop
         Anchors = []
         TabOrder = 0
       end
       object DBGrid7: TDBGrid
         Left = 0
-        Height = 657
+        Height = 443
         Top = 234
-        Width = 1374
+        Width = 1315
         Align = alClient
         Anchors = []
         Color = clWindow
@@ -338,15 +338,15 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 9
         Top = 225
-        Width = 1374
+        Width = 1315
         Align = alTop
         ResizeAnchor = akTop
       end
     end
     object TS8: TTabSheet
       Caption = 'Query 8'
-      ClientHeight = 891
-      ClientWidth = 1374
+      ClientHeight = 677
+      ClientWidth = 1315
       object Memo8: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1
@@ -355,16 +355,16 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 225
         Top = 0
-        Width = 1374
+        Width = 1315
         Align = alTop
         Anchors = []
         TabOrder = 0
       end
       object DBGrid8: TDBGrid
         Left = 0
-        Height = 657
+        Height = 443
         Top = 234
-        Width = 1374
+        Width = 1315
         Align = alClient
         Anchors = []
         Color = clWindow
@@ -378,15 +378,15 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 9
         Top = 225
-        Width = 1374
+        Width = 1315
         Align = alTop
         ResizeAnchor = akTop
       end
     end
     object TS9: TTabSheet
       Caption = 'Query 9'
-      ClientHeight = 891
-      ClientWidth = 1374
+      ClientHeight = 677
+      ClientWidth = 1315
       object Memo9: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1
@@ -395,16 +395,16 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 225
         Top = 0
-        Width = 1374
+        Width = 1315
         Align = alTop
         Anchors = []
         TabOrder = 0
       end
       object DBGrid9: TDBGrid
         Left = 0
-        Height = 657
+        Height = 443
         Top = 234
-        Width = 1374
+        Width = 1315
         Align = alClient
         Anchors = []
         Color = clWindow
@@ -420,15 +420,15 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 9
         Top = 225
-        Width = 1374
+        Width = 1315
         Align = alTop
         ResizeAnchor = akTop
       end
     end
     object TS10: TTabSheet
       Caption = 'Query 10'
-      ClientHeight = 891
-      ClientWidth = 1374
+      ClientHeight = 677
+      ClientWidth = 1315
       object Memo10: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1
@@ -437,16 +437,16 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 225
         Top = 0
-        Width = 1374
+        Width = 1315
         Align = alTop
         Anchors = []
         TabOrder = 0
       end
       object DBGrid10: TDBGrid
         Left = 0
-        Height = 657
+        Height = 443
         Top = 234
-        Width = 1374
+        Width = 1315
         Align = alClient
         Anchors = []
         Color = clWindow
@@ -462,7 +462,7 @@ object MainApplicationForm: TMainApplicationForm
         Left = 0
         Height = 9
         Top = 225
-        Width = 1374
+        Width = 1315
         Align = alTop
         ResizeAnchor = akTop
       end
@@ -472,13 +472,14 @@ object MainApplicationForm: TMainApplicationForm
     Left = 0
     Height = 100
     Top = 0
-    Width = 1380
+    Width = 1321
     Align = alTop
     Anchors = [akLeft, akRight]
     ClientHeight = 100
-    ClientWidth = 1380
+    ClientWidth = 1321
     Constraints.MinHeight = 100
     TabOrder = 3
+    OnClick = Panel1Click
     object Button3: TButton
       Left = 1256
       Height = 25
@@ -625,7 +626,7 @@ object MainApplicationForm: TMainApplicationForm
     Left = 0
     Height = 5
     Top = 100
-    Width = 1380
+    Width = 1321
     Align = alTop
     ResizeAnchor = akTop
   end

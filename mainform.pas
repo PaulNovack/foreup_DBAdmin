@@ -115,6 +115,7 @@ type
     FQueries: array of TQueryInfo;
   public
     QuerySaveName: String;
+    exeDir: String;
   end;
 
 var
@@ -187,7 +188,7 @@ begin
   SL := TStringList.Create;
   try
     SL.Text := thisMemo.Text;
-    SL.SaveToFile('/Users/paulnovack/code/forupDBAdmin/queries/Query' + IntToStr(activeTab) + '.sql');
+    SL.SaveToFile(exeDir + 'queries/Query' + IntToStr(activeTab) + '.sql');
   finally
     SL.Free;
   end;
@@ -234,9 +235,10 @@ var
   qFilename: string;
   memoControl: TMemo;
 begin
+   exeDir := ExpandFileName(ExtractFilePath(ParamStr(0)) + '../../../');
   for i := 1 to 10 do
   begin
-    qFilename := '/Users/paulnovack/code/forupDBAdmin/queries/Query' + IntToStr(i) + '.sql';
+    qFilename := exeDir + 'queries/Query' + IntToStr(i) + '.sql';
     if FileExists(qFilename) then
     begin
       memoControl := TMemo(FindComponent('Memo' + IntToStr(i)));
@@ -270,7 +272,7 @@ begin
   thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
   if QueryNameEdit.Text <> '' then
   begin
-    MainApplicationForm.AddQueryToFile('/Users/paulnovack/code/forupDBAdmin/repeatable/queries.json'
+    MainApplicationForm.AddQueryToFile(exeDir + 'repeatable/queries.json'
       ,QueryNameEdit.Text ,thisMemo.Text);
   end;
   QueryNameEdit.Text := '';

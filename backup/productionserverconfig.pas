@@ -24,6 +24,7 @@ type
     Label4: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
 
@@ -35,6 +36,8 @@ var
   ProductionServerConfgForm: TProductionServerConfgForm;
 
 implementation
+uses
+  MainForm
 
 {$R *.lfm}
 
@@ -47,14 +50,14 @@ procedure TProductionServerConfgForm.FormShow(Sender: TObject);
     JSONParser: TJSONParser;
     FileStream: TFileStream;
   begin
-  if not FileExists('prod.json') then
+  if not FileExists(MainApplicationForm.exeDir + 'prod.json') then
   begin
     ShowMessage('prod.json not found!  Enter your credentials and close form to create.');
     Exit;
   end;
 
   // Create a file stream and parser
-  FileStream := TFileStream.Create('prod.json', fmOpenRead or fmShareDenyNone);
+  FileStream := TFileStream.Create(MainApplicationForm.exeDir + 'configs/prod.json', fmOpenRead or fmShareDenyNone);
   try
     JSONParser := TJSONParser.Create(FileStream);
     try
@@ -98,7 +101,7 @@ procedure TProductionServerConfgForm.FormClose(Sender: TObject; var CloseAction:
     JSONString := TStringList.Create;
     try
       JSONString.Text := JSONObject.FormatJSON();  // Nicely formatted JSON
-      JSONString.SaveToFile('prod.json');
+      JSONString.SaveToFile(MainApplicationForm.exeDir + 'configs/prod.json');
     finally
       JSONString.Free;
     end;
@@ -111,6 +114,11 @@ procedure TProductionServerConfgForm.FormClose(Sender: TObject; var CloseAction:
   DataModule.DataModule1.MySQL80Connection1.UserName := EditUserName.Text;
   DataModule.DataModule1.MySQL80Connection1.Password := EditPassword.Text;
   DataModule.DataModule1.MySQL80Connection1.Connected := true;
+end;
+
+procedure TProductionServerConfgForm.FormCreate(Sender: TObject);
+begin
+
 end;
 
 procedure TProductionServerConfgForm.Button1Click(Sender: TObject);

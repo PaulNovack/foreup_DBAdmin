@@ -36,6 +36,8 @@ var
   ProductionServerConfgForm: TProductionServerConfgForm;
 
 implementation
+uses
+  MainForm;
 
 {$R *.lfm}
 
@@ -48,14 +50,14 @@ procedure TProductionServerConfgForm.FormShow(Sender: TObject);
     JSONParser: TJSONParser;
     FileStream: TFileStream;
   begin
-  if not FileExists('/Users/paulnovack/code/forupDBAdmin/configs/prod.json') then
+  if not FileExists(MainApplicationForm.exeDir + 'prod.json') then
   begin
     ShowMessage('prod.json not found!  Enter your credentials and close form to create.');
     Exit;
   end;
 
   // Create a file stream and parser
-  FileStream := TFileStream.Create('/Users/paulnovack/code/forupDBAdmin/configs/prod.json', fmOpenRead or fmShareDenyNone);
+  FileStream := TFileStream.Create(MainApplicationForm.exeDir + 'configs/prod.json', fmOpenRead or fmShareDenyNone);
   try
     JSONParser := TJSONParser.Create(FileStream);
     try
@@ -99,7 +101,7 @@ procedure TProductionServerConfgForm.FormClose(Sender: TObject; var CloseAction:
     JSONString := TStringList.Create;
     try
       JSONString.Text := JSONObject.FormatJSON();  // Nicely formatted JSON
-      JSONString.SaveToFile('/Users/paulnovack/code/forupDBAdmin/configs/prod.json');
+      JSONString.SaveToFile(MainApplicationForm.exeDir + 'configs/prod.json');
     finally
       JSONString.Free;
     end;
