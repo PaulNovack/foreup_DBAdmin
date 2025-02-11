@@ -1,13 +1,13 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
   Height = 698
-  HorizontalOffset = 493
-  VerticalOffset = 216
+  HorizontalOffset = 264
+  VerticalOffset = 679
   Width = 1192
   object MySQL80Connection1: TMySQL80Connection
-    Connected = True
+    Connected = False
     LoginPrompt = False
-    DatabaseName = 'eagle_foreup'
+    DatabaseName = 'foreup_dev'
     KeepConnection = False
     Password = 'password'
     Transaction = SQLTransaction1
@@ -26,7 +26,7 @@ object DataModule1: TDataModule1
     Top = 56
   end
   object SQLTransaction1: TSQLTransaction
-    Active = True
+    Active = False
     Database = MySQL80Connection1
     Left = 68
     Top = 166
@@ -51,7 +51,7 @@ object DataModule1: TDataModule1
   object SchemaConn: TMySQL80Connection
     Connected = False
     LoginPrompt = False
-    DatabaseName = 'eagle_foreup'
+    DatabaseName = 'foreup_dev'
     KeepConnection = False
     Params.Strings = (
       'Port=3306'

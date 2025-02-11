@@ -11,9 +11,7 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, MainForm, DevServerConfig, 
-ProductionServerConfig, DataModule, listtables, loadSqlStatements,
-SaveQueryName, QueryNameForm
-  { you can add units after this };
+ProductionServerConfig, DataModule, listtables, loadSqlStatements;
 
 {$R *.res}
 
@@ -29,8 +27,6 @@ begin
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TListTablesForm, ListTablesForm);
   Application.CreateForm(TListQuerysForm, ListQuerysForm);
-  Application.CreateForm(TSaveQueryForm, SaveQueryForm);
-  Application.CreateForm(TQueryNameFrm, QueryNameFrm);
   Application.Run;
 end.
 

@@ -4,15 +4,17 @@
     <Version Value="12"/>
     <BuildModes Active="Default">
       <SessionMatrixOptions Count="1">
-        <Item1 ID="930855168300" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item1 ID="882441033737" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
       </SessionMatrixOptions>
     </BuildModes>
     <Units>
       <Unit>
         <Filename Value="ForeupDBApplication.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="8"/>
-        <CursorPos X="47" Y="14"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="11"/>
+        <CursorPos X="59" Y="30"/>
         <UsageCount Value="68"/>
         <Loaded Value="True"/>
       </Unit>
@@ -23,9 +25,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="263"/>
-        <CursorPos X="38" Y="276"/>
+        <CursorPos X="28" Y="276"/>
+        <ComponentState Value="2"/>
         <UsageCount Value="68"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -37,7 +39,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DevServerConfig"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="93"/>
         <CursorPos Y="116"/>
         <UsageCount Value="68"/>
@@ -50,7 +52,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ProductionServerConfig"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <CursorPos X="66" Y="51"/>
         <UsageCount Value="68"/>
         <Loaded Value="True"/>
@@ -71,7 +73,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="DataModule"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="25"/>
         <CursorPos Y="58"/>
         <UsageCount Value="68"/>
@@ -84,7 +86,7 @@
         <ComponentName Value="ListTablesForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <CursorPos X="10" Y="20"/>
         <UsageCount Value="66"/>
         <Loaded Value="True"/>
@@ -104,7 +106,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="loadSqlStatements"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="64"/>
         <CursorPos X="6" Y="87"/>
         <UsageCount Value="61"/>
@@ -256,48 +258,45 @@
       </Unit>
       <Unit>
         <Filename Value="../../Downloads/lazarus/lcl/include/customcombobox.inc"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="211"/>
         <CursorPos Y="225"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../Downloads/lazarus/components/codetools/ccodeparsertool.pas"/>
         <UnitName Value="CCodeParserTool"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="2018"/>
         <CursorPos X="9" Y="2034"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../Downloads/lazarus/components/codetools/finddeclarationtool.pas"/>
         <UnitName Value="FindDeclarationTool"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="14096"/>
         <CursorPos X="3" Y="14114"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../Downloads/lazarus/lcl/interfaces/carbon/carbonbars.pp"/>
         <UnitName Value="CarbonBars"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="2" Y="16"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/3.8.0/lcl/interfaces/cocoa/cocoa_extra.pas"/>
+        <UnitName Value="Cocoa_Extra"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="7"/>
+        <CursorPos X="2" Y="18"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="../../Downloads/lazarus/components/codetools/finddeclarationtool.pas"/>
-        <Caret Line="14114" Column="3" TopLine="14096"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="10" Column="67"/>
-      </Position>
       <Position>
         <Filename Value="mainform.pas"/>
         <Caret Line="334" Column="20" TopLine="319"/>
@@ -409,6 +408,14 @@
       <Position>
         <Filename Value="mainform.pas"/>
         <Caret Line="295" TopLine="293"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="276" Column="38" TopLine="263"/>
+      </Position>
+      <Position>
+        <Filename Value="/usr/share/lazarus/3.8.0/lcl/interfaces/cocoa/cocoa_extra.pas"/>
+        <Caret Line="18" Column="2" TopLine="7"/>
       </Position>
     </JumpHistory>
     <RunParams>
