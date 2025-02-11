@@ -45,13 +45,15 @@ var
 
 implementation
 
+uses
+  MainForm;
 {$R *.lfm}
 
 { TfrmQuerySelect }
 
 procedure TListQuerysForm.FormCreate(Sender: TObject);
 begin
-  queriesFilename := '/Users/paulnovack/code/forupDBAdmin/repeatable/queries.json';
+  queriesFilename := 'repeatable/queries.json';
   LoadQueriesFromJSON(queriesFilename);
   PopulateComboBox;
 end;

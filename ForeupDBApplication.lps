@@ -11,11 +11,10 @@
       <Unit>
         <Filename Value="ForeupDBApplication.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
         <TopLine Value="11"/>
         <CursorPos X="59" Y="30"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -25,10 +24,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
-        <TopLine Value="263"/>
-        <CursorPos X="28" Y="276"/>
+        <TopLine Value="522"/>
+        <CursorPos Y="238"/>
         <ComponentState Value="2"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -40,9 +39,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DevServerConfig"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="93"/>
-        <CursorPos Y="116"/>
-        <UsageCount Value="68"/>
+        <TopLine Value="25"/>
+        <CursorPos X="73" Y="112"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -53,8 +52,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ProductionServerConfig"/>
         <EditorIndex Value="3"/>
+        <TopLine Value="31"/>
         <CursorPos X="66" Y="51"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -63,7 +63,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="27"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="70"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
       <Unit>
@@ -74,9 +74,9 @@
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="DataModule"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="25"/>
+        <TopLine Value="38"/>
         <CursorPos Y="58"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -87,8 +87,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="5"/>
-        <CursorPos X="10" Y="20"/>
-        <UsageCount Value="66"/>
+        <CursorPos Y="31"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -96,7 +96,7 @@
         <Filename Value="queries.json"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="63"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
       <Unit>
@@ -107,9 +107,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="loadSqlStatements"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="64"/>
-        <CursorPos X="6" Y="87"/>
-        <UsageCount Value="61"/>
+        <TopLine Value="38"/>
+        <CursorPos Y="48"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -149,10 +149,12 @@
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/include/control.inc"/>
-        <EditorIndex Value="-1"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
         <TopLine Value="2965"/>
-        <CursorPos Y="2976"/>
-        <UsageCount Value="27"/>
+        <CursorPos Y="2974"/>
+        <UsageCount Value="28"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/interfaces/gtk2/gtk2widgetset.inc"/>
@@ -289,74 +291,13 @@
       <Unit>
         <Filename Value="/usr/share/lazarus/3.8.0/lcl/interfaces/cocoa/cocoa_extra.pas"/>
         <UnitName Value="Cocoa_Extra"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="7"/>
         <CursorPos X="2" Y="18"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="334" Column="20" TopLine="319"/>
-      </Position>
-      <Position>
-        <Filename Value="listtables.pas"/>
-        <Caret Line="20" Column="10"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="340" Column="6" TopLine="318"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="341" Column="6" TopLine="319"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="340" Column="6" TopLine="318"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="341" Column="6" TopLine="319"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="340" Column="6" TopLine="318"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="341" Column="6" TopLine="319"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="340" Column="6" TopLine="318"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="341" Column="6" TopLine="319"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="342" Column="6" TopLine="320"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="343" Column="6" TopLine="321"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="344" Column="6" TopLine="322"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="343" Column="6" TopLine="321"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="344" Column="6" TopLine="322"/>
-      </Position>
       <Position>
         <Filename Value="mainform.pas"/>
         <Caret Line="342" Column="34" TopLine="322"/>
@@ -414,8 +355,68 @@
         <Caret Line="276" Column="38" TopLine="263"/>
       </Position>
       <Position>
-        <Filename Value="/usr/share/lazarus/3.8.0/lcl/interfaces/cocoa/cocoa_extra.pas"/>
-        <Caret Line="18" Column="2" TopLine="7"/>
+        <Filename Value="ForeupDBApplication.lpr"/>
+        <Caret Line="30" Column="59" TopLine="11"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="276" Column="28" TopLine="263"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="383" Column="5" TopLine="376"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="350" Column="3" TopLine="348"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="355" Column="3" TopLine="348"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="360" Column="3" TopLine="348"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="369" Column="3" TopLine="363"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="383" Column="5" TopLine="484"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="118" Column="11" TopLine="136"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="238" TopLine="228"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="241" Column="28" TopLine="231"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="238" TopLine="231"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="239" TopLine="231"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="241" TopLine="231"/>
+      </Position>
+      <Position>
+        <Filename Value="listtables.pas"/>
+        <Caret Line="31"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="238" TopLine="522"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -430,7 +431,7 @@
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="mainform.pas"/>
-        <Line Value="473"/>
+        <Line Value="475"/>
       </Item>
     </BreakPoints>
     <Watches>

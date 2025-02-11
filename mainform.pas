@@ -60,7 +60,7 @@ type
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuSaveRepeatable: TMenuItem;
-    MenuItem6: TMenuItem;
+    GetQueryFromRepeatableMenu: TMenuItem;
     PageControl1: TPageControl;
     Panel1: TPanel;
     Splitter1: TSplitter;
@@ -105,7 +105,7 @@ type
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
     procedure MenuSaveRepeatableClick(Sender: TObject);
-    procedure MenuItem6Click(Sender: TObject);
+    procedure GetQueryFromRepeatableMenuClick(Sender: TObject);
     procedure RemoveLinesStartingWithLimit(AMemo: TMemo);
     procedure ApplyDateTimeDisplayFormats;
     procedure MemoFieldGetText(Sender: TField; var aText: string; DisplayText: Boolean);
@@ -115,6 +115,7 @@ type
     FQueries: array of TQueryInfo;
   public
     QuerySaveName: String;
+    exeDir: string;
   end;
 
 var
@@ -187,7 +188,7 @@ begin
   SL := TStringList.Create;
   try
     SL.Text := thisMemo.Text;
-    SL.SaveToFile('/Users/paulnovack/code/forupDBAdmin/queries/Query' + IntToStr(activeTab) + '.sql');
+    SL.SaveToFile(MainApplicationForm.exeDir + 'queries/Query' + IntToStr(activeTab) + '.sql');
   finally
     SL.Free;
   end;
@@ -234,9 +235,10 @@ var
   qFilename: string;
   memoControl: TMemo;
 begin
+  exeDir := ExtractFilePath(ParamStr(0));
   for i := 1 to 10 do
   begin
-    qFilename := '/Users/paulnovack/code/forupDBAdmin/queries/Query' + IntToStr(i) + '.sql';
+    qFilename := exeDir + 'queries/Query' + IntToStr(i) + '.sql';
     if FileExists(qFilename) then
     begin
       memoControl := TMemo(FindComponent('Memo' + IntToStr(i)));
@@ -270,7 +272,7 @@ begin
   thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
   if QueryNameEdit.Text <> '' then
   begin
-    MainApplicationForm.AddQueryToFile('/Users/paulnovack/code/forupDBAdmin/repeatable/queries.json'
+    MainApplicationForm.AddQueryToFile(MainApplicationForm.exeDir + 'repeatable/queries.json'
       ,QueryNameEdit.Text ,thisMemo.Text);
   end;
   QueryNameEdit.Text := '';
@@ -376,7 +378,7 @@ begin
 
 end;
 
-procedure TMainApplicationForm.MenuItem6Click(Sender: TObject);
+procedure TMainApplicationForm.GetQueryFromRepeatableMenuClick(Sender: TObject);
 var
   userChoice: TModalResult;
 begin
