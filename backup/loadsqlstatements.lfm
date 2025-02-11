@@ -1,7 +1,7 @@
 object ListQuerysForm: TListQuerysForm
-  Left = 2503
+  Left = 2353
   Height = 375
-  Top = 240
+  Top = 171
   Width = 607
   Caption = 'Query Selector'
   ClientHeight = 375

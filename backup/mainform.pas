@@ -115,6 +115,7 @@ type
     FQueries: array of TQueryInfo;
   public
     QuerySaveName: String;
+    exeDir: string;
   end;
 
 var
@@ -187,7 +188,7 @@ begin
   SL := TStringList.Create;
   try
     SL.Text := thisMemo.Text;
-    SL.SaveToFile('/Users/paulnovack/code/forupDBAdmin/queries/Query' + IntToStr(activeTab) + '.sql');
+    SL.SaveToFile(MainApplicationForm.exeDir + 'queries/Query' + IntToStr(activeTab) + '.sql');
   finally
     SL.Free;
   end;
@@ -234,9 +235,10 @@ var
   qFilename: string;
   memoControl: TMemo;
 begin
+  exeDir := ExtractFilePath(ParamStr(0));
   for i := 1 to 10 do
   begin
-    qFilename := '/Users/paulnovack/code/forupDBAdmin/queries/Query' + IntToStr(i) + '.sql';
+    qFilename := exeDir + 'queries/Query' + IntToStr(i) + '.sql';
     if FileExists(qFilename) then
     begin
       memoControl := TMemo(FindComponent('Memo' + IntToStr(i)));
@@ -261,11 +263,17 @@ begin
 end;
 
 procedure TMainApplicationForm.SaveQueryButtonChange(Sender: TObject);
+var
+  activeTab: Integer;
+  thisMemo: TMemo;
 begin
+  activeTab := PageControl1.ActivePageIndex;
+  activeTab := activeTab + 1;
+  thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
   if QueryNameEdit.Text <> '' then
   begin
-    MainApplicationForm.AddQueryToFile('/Users/paulnovack/code/forupDBAdmin/repeatable/queries.json'
-      ,QueryNameEdit.Text ,MainApplicationForm.Memo1.Text);
+    MainApplicationForm.AddQueryToFile(MainApplicationForm.exeDir + 'repeatable/queries.json'
+      ,QueryNameEdit.Text ,thisMemo.Text);
   end;
   QueryNameEdit.Text := '';
   QueryNameEdit.Visible  := false;
@@ -273,7 +281,6 @@ begin
   CancelSaveQueryButton.visible := false;
   QueryNameLabel.Visible := false;
 end;
-
 
 
 procedure TMainApplicationForm.SelectButtonClick(Sender: TObject);
@@ -373,16 +380,22 @@ end;
 
 procedure TMainApplicationForm.MenuItem6Click(Sender: TObject);
 var
+  activeTab: Integer;
+  thisMemo: TMemo;
   userChoice: TModalResult;
 begin
-    userChoice := ListQuerysForm.ShowModal;
-    case userChoice of
-      mrOk:
-        begin
-          MainApplicationForm.Memo1.Text := ListQuerysForm.Memo1.Text;
-        end;
-    end;
+  activeTab := PageControl1.ActivePageIndex;
+  activeTab := activeTab + 1;
+  thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
+  userChoice := ListQuerysForm.ShowModal;
+  case userChoice of
+    mrOk:
+      begin
+        thisMemo.Text := ListQuerysForm.Memo1.Text;
+      end;
+  end;
 end;
+
 
 procedure TMainApplicationForm.RemoveLinesStartingWithLimit(AMemo: TMemo);
 var

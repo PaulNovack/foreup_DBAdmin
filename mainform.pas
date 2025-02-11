@@ -378,16 +378,22 @@ end;
 
 procedure TMainApplicationForm.MenuItem6Click(Sender: TObject);
 var
+  activeTab: Integer;
+  thisMemo: TMemo;
   userChoice: TModalResult;
 begin
-    userChoice := ListQuerysForm.ShowModal;
-    case userChoice of
-      mrOk:
-        begin
-          MainApplicationForm.Memo1.Text := ListQuerysForm.Memo1.Text;
-        end;
-    end;
+  activeTab := PageControl1.ActivePageIndex;
+  activeTab := activeTab + 1;
+  thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
+  userChoice := ListQuerysForm.ShowModal;
+  case userChoice of
+    mrOk:
+      begin
+        thisMemo.Text := ListQuerysForm.Memo1.Text;
+      end;
+  end;
 end;
+
 
 procedure TMainApplicationForm.RemoveLinesStartingWithLimit(AMemo: TMemo);
 var

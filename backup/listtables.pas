@@ -42,6 +42,7 @@ end;
 
 procedure TListTablesForm.FormShow(Sender: TObject);
 begin
+  DataModule1.SchemaConn.Connected := true;
   DataModule1.SchemaQ.Active := true;
 end;
 

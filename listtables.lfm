@@ -1,7 +1,7 @@
 object ListTablesForm: TListTablesForm
-  Left = 1996
+  Left = 2267
   Height = 895
-  Top = 157
+  Top = 247
   Width = 392
   Caption = 'Tables in Database'
   ClientHeight = 895
