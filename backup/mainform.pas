@@ -178,6 +178,7 @@ begin
       else
       begin
         thisQ.ExecSQL;
+        ShowMessage('Rows affected: ' + IntToStr(thisQ.RowsAffected));
       end;
   except
       on E: Exception do
@@ -189,7 +190,7 @@ begin
 
   for i := 0 to thisQ.FieldCount - 1 do
   begin
-    if thisQ.Fields[i].DataType in [ftMemo, ftWideMemo] then
+    if thisQ.Fields[i].DataType in [ftMemo, ftWideMemo,ftBlob] then
     begin
       thisQ.Fields[i].OnGetText := @MemoFieldGetText;
     end;
