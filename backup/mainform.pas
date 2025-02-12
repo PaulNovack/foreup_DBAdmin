@@ -88,6 +88,7 @@ type
     TS9: TTabSheet;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure CourseIdEditChange(Sender: TObject);
     procedure ExecuteQueryButtonClick(Sender: TObject);
     procedure ShowTablesButtonClick(Sender: TObject);
     procedure Button9Click(Sender: TObject);
@@ -136,6 +137,11 @@ end;
 procedure TMainApplicationForm.Button2Click(Sender: TObject);
 begin
   ProductionServerConfigForm.Show;
+end;
+
+procedure TMainApplicationForm.CourseIdEditChange(Sender: TObject);
+begin
+
 end;
 
 procedure TMainApplicationForm.ExecuteQueryButtonClick(Sender: TObject);

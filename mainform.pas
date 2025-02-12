@@ -88,6 +88,7 @@ type
     TS9: TTabSheet;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure CourseIdEditChange(Sender: TObject);
     procedure ExecuteQueryButtonClick(Sender: TObject);
     procedure ShowTablesButtonClick(Sender: TObject);
     procedure Button9Click(Sender: TObject);
@@ -138,6 +139,11 @@ begin
   ProductionServerConfigForm.Show;
 end;
 
+procedure TMainApplicationForm.CourseIdEditChange(Sender: TObject);
+begin
+
+end;
+
 procedure TMainApplicationForm.ExecuteQueryButtonClick(Sender: TObject);
 var
   activeTab: Integer;
@@ -166,7 +172,7 @@ begin
     end;
   end;
   Query := thisMemo.Text;
-  StringReplace(Query, ':courseId', CourseIdEdit.Text,
+  Query := StringReplace(Query, ':courseId', CourseIdEdit.Text,
                                     [rfReplaceAll, rfIgnoreCase]);
   thisQ.SQL.Text := Query;
 

@@ -518,6 +518,7 @@ object MainApplicationForm: TMainApplicationForm
       ParentFont = False
       TabOrder = 3
       Text = '22692'
+      OnChange = CourseIdEditChange
     end
     object Label1: TLabel
       Left = 680
