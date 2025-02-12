@@ -1,7 +1,7 @@
 object ListTablesForm: TListTablesForm
   Left = 2267
   Height = 895
-  Top = 247
+  Top = 157
   Width = 392
   Caption = 'Tables in Database'
   ClientHeight = 895
@@ -18,7 +18,7 @@ object ListTablesForm: TListTablesForm
     AutoEdit = False
     Color = clWindow
     Columns = <>
-    DataSource = DataModule1.DataSource1
+    DataSource = DataModule1.TableListDataSource
     TabOrder = 0
     OnCellClick = DBGrid1CellClick
   end

@@ -12,7 +12,7 @@ type
   { TDataModule1 }
 
   TDataModule1 = class(TDataModule)
-    DataSource1: TDataSource;
+    TableListDataSource: TDataSource;
     DS1: TDataSource;
     DS10: TDataSource;
     DS2: TDataSource;
@@ -23,9 +23,8 @@ type
     DS7: TDataSource;
     DS8: TDataSource;
     DS9: TDataSource;
-    MySQL80Connection1: TMySQL80Connection;
+    MainConnection: TMySQL80Connection;
     MySQL80Connection2: TMySQL80Connection;
-    SchemaConn: TMySQL80Connection;
     SQ1: TSQLQuery;
     SQ10: TSQLQuery;
     SQ2: TSQLQuery;
@@ -39,8 +38,7 @@ type
     SQLQuery2: TSQLQuery;
     SchemaQ: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
-    SchemaTran: TSQLTransaction;
-    procedure DataSource1DataChange(Sender: TObject; Field: TField);
+    procedure TableListDataSourceDataChange(Sender: TObject; Field: TField);
   private
 
   public
@@ -56,7 +54,7 @@ implementation
 
 { TDataModule1 }
 
-procedure TDataModule1.DataSource1DataChange(Sender: TObject; Field: TField);
+procedure TDataModule1.TableListDataSourceDataChange(Sender: TObject; Field: TField);
 begin
 
 end;

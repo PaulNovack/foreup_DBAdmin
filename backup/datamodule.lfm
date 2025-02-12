@@ -1,10 +1,10 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
   Height = 698
-  HorizontalOffset = 270
+  HorizontalOffset = 264
   VerticalOffset = 461
   Width = 1192
-  object MySQL80Connection1: TMySQL80Connection
+  object MainConnection: TMySQL80Connection
     Connected = False
     LoginPrompt = False
     DatabaseName = 'foreup_dev'
@@ -27,13 +27,13 @@ object DataModule1: TDataModule1
   end
   object SQLTransaction1: TSQLTransaction
     Active = False
-    Database = MySQL80Connection1
-    Left = 68
+    Database = MainConnection
+    Left = 72
     Top = 166
   end
   object SQ1: TSQLQuery
     FieldDefs = <>
-    Database = MySQL80Connection1
+    Database = MainConnection
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
@@ -48,22 +48,6 @@ object DataModule1: TDataModule1
     Left = 1007
     Top = 257
   end
-  object SchemaConn: TMySQL80Connection
-    Connected = False
-    LoginPrompt = False
-    DatabaseName = 'foreup_dev'
-    KeepConnection = False
-    Params.Strings = (
-      'Port=3306'
-    )
-    Password = 'password'
-    Transaction = SchemaTran
-    UserName = 'root'
-    HostName = '127.0.0.1'
-    SkipLibraryVersionCheck = True
-    Left = 768
-    Top = 65
-  end
   object SchemaQ: TSQLQuery
     MaxIndexesCount = 4
     FieldDefs = <    
@@ -73,8 +57,8 @@ object DataModule1: TDataModule1
         Precision = -1
         Size = 73
       end>
-    Database = SchemaConn
-    Transaction = SchemaTran
+    Database = MainConnection
+    Transaction = SQLTransaction1
     SQL.Strings = (
       'show tables;'
     )
@@ -83,16 +67,10 @@ object DataModule1: TDataModule1
     Left = 770
     Top = 208
   end
-  object SchemaTran: TSQLTransaction
-    Active = False
-    Database = SchemaConn
-    Left = 769
-    Top = 136
-  end
-  object DataSource1: TDataSource
+  object TableListDataSource: TDataSource
     AutoEdit = False
     DataSet = SchemaQ
-    OnDataChange = DataSource1DataChange
+    OnDataChange = TableListDataSourceDataChange
     Left = 768
     Top = 291
   end
@@ -103,7 +81,7 @@ object DataModule1: TDataModule1
   end
   object SQ2: TSQLQuery
     FieldDefs = <>
-    Database = MySQL80Connection1
+    Database = MainConnection
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
@@ -118,7 +96,7 @@ object DataModule1: TDataModule1
   end
   object SQ3: TSQLQuery
     FieldDefs = <>
-    Database = MySQL80Connection1
+    Database = MainConnection
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
@@ -133,7 +111,7 @@ object DataModule1: TDataModule1
   end
   object SQ4: TSQLQuery
     FieldDefs = <>
-    Database = MySQL80Connection1
+    Database = MainConnection
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
@@ -148,7 +126,7 @@ object DataModule1: TDataModule1
   end
   object SQ5: TSQLQuery
     FieldDefs = <>
-    Database = MySQL80Connection1
+    Database = MainConnection
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
@@ -163,7 +141,7 @@ object DataModule1: TDataModule1
   end
   object SQ6: TSQLQuery
     FieldDefs = <>
-    Database = MySQL80Connection1
+    Database = MainConnection
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
@@ -178,7 +156,7 @@ object DataModule1: TDataModule1
   end
   object SQ7: TSQLQuery
     FieldDefs = <>
-    Database = MySQL80Connection1
+    Database = MainConnection
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
@@ -193,7 +171,7 @@ object DataModule1: TDataModule1
   end
   object SQ8: TSQLQuery
     FieldDefs = <>
-    Database = MySQL80Connection1
+    Database = MainConnection
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
@@ -208,7 +186,7 @@ object DataModule1: TDataModule1
   end
   object SQ9: TSQLQuery
     FieldDefs = <>
-    Database = MySQL80Connection1
+    Database = MainConnection
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
@@ -223,7 +201,7 @@ object DataModule1: TDataModule1
   end
   object SQ10: TSQLQuery
     FieldDefs = <>
-    Database = MySQL80Connection1
+    Database = MainConnection
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>

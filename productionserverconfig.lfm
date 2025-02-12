@@ -1,7 +1,7 @@
-object ProductionServerConfgForm: TProductionServerConfgForm
-  Left = 2304
+object ProductionServerConfigForm: TProductionServerConfigForm
+  Left = 2230
   Height = 211
-  Top = 560
+  Top = 263
   Width = 509
   Caption = 'Production Server Configuration'
   ClientHeight = 211
@@ -90,5 +90,6 @@ object ProductionServerConfgForm: TProductionServerConfgForm
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 5
+    OnClick = Button2Click
   end
 end

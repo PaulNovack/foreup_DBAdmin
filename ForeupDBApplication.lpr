@@ -23,7 +23,8 @@ begin
   Application.CreateForm(TMainApplicationForm, MainApplicationForm);
   Application.CreateForm(TDevelopmentServerConfigForm, 
     DevelopmentServerConfigForm);
-  Application.CreateForm(TProductionServerConfgForm, ProductionServerConfgForm);
+  Application.CreateForm(TProductionServerConfigForm, ProductionServerConfigForm
+    );
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TListTablesForm, ListTablesForm);
   Application.CreateForm(TListQuerysForm, ListQuerysForm);

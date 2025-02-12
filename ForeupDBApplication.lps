@@ -3,8 +3,9 @@
   <ProjectSession>
     <Version Value="12"/>
     <BuildModes Active="Default">
-      <SessionMatrixOptions Count="1">
-        <Item1 ID="930855168300" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+      <SessionMatrixOptions Count="2">
+        <Item1 ID="930855168300" Targets="Darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item2 ID="200472768652" Targets="Linux" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
       </SessionMatrixOptions>
     </BuildModes>
     <Units>
@@ -13,7 +14,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="47" Y="14"/>
-        <UsageCount Value="108"/>
+        <UsageCount Value="112"/>
       </Unit>
       <Unit>
         <Filename Value="mainform.pas"/>
@@ -23,9 +24,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="252"/>
-        <CursorPos Y="270"/>
-        <UsageCount Value="108"/>
+        <TopLine Value="140"/>
+        <CursorPos Y="153"/>
+        <UsageCount Value="112"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -36,33 +37,29 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DevServerConfig"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="34"/>
-        <CursorPos X="33" Y="43"/>
-        <UsageCount Value="108"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="74"/>
+        <CursorPos X="5" Y="90"/>
+        <UsageCount Value="112"/>
       </Unit>
       <Unit>
         <Filename Value="productionserverconfig.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="ProductionServerConfgForm"/>
+        <ComponentName Value="ProductionServerConfigForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ProductionServerConfig"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="28"/>
-        <CursorPos X="12" Y="40"/>
-        <UsageCount Value="108"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="113"/>
+        <CursorPos X="27" Y="133"/>
+        <UsageCount Value="112"/>
       </Unit>
       <Unit>
         <Filename Value="dev.json"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="27"/>
-        <UsageCount Value="108"/>
+        <UsageCount Value="112"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
       <Unit>
@@ -74,8 +71,8 @@
         <UnitName Value="DataModule"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="25"/>
-        <CursorPos Y="58"/>
-        <UsageCount Value="108"/>
+        <CursorPos Y="56"/>
+        <UsageCount Value="112"/>
       </Unit>
       <Unit>
         <Filename Value="listtables.pas"/>
@@ -84,14 +81,15 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="10" Y="20"/>
-        <UsageCount Value="106"/>
+        <TopLine Value="20"/>
+        <CursorPos X="65" Y="43"/>
+        <UsageCount Value="110"/>
       </Unit>
       <Unit>
         <Filename Value="queries.json"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="101"/>
+        <UsageCount Value="105"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
       <Unit>
@@ -101,12 +99,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="loadSqlStatements"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="34"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="76"/>
         <CursorPos X="6" Y="195"/>
-        <UsageCount Value="101"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="105"/>
       </Unit>
       <Unit>
         <Filename Value="savequeryname.pas"/>
@@ -282,54 +278,126 @@
         <UsageCount Value="29"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="11">
+    <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="238" Column="19" TopLine="231"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="262" Column="3" TopLine="252"/>
-      </Position>
-      <Position>
-        <Filename Value="devserverconfig.pas"/>
-        <Caret Line="108" Column="66" TopLine="101"/>
-      </Position>
-      <Position>
-        <Filename Value="productionserverconfig.pas"/>
-        <Caret Line="40" Column="12" TopLine="28"/>
+        <Caret Line="156" TopLine="135"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="270" TopLine="259"/>
+        <Caret Line="157" TopLine="135"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="271" TopLine="259"/>
+        <Caret Line="158" TopLine="135"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="272" TopLine="259"/>
+        <Caret Line="159" TopLine="135"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="273" TopLine="259"/>
+        <Caret Line="160" TopLine="135"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="276" TopLine="126"/>
+        <Caret Line="161" TopLine="135"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="238" TopLine="231"/>
+        <Caret Line="168" TopLine="139"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="235" Column="38" TopLine="231"/>
+        <Caret Line="169" TopLine="140"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="238" TopLine="231"/>
+        <Caret Line="171" TopLine="143"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="173" TopLine="145"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="174" TopLine="146"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="180" Column="14" TopLine="168"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="181" Column="55" TopLine="154"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="153" TopLine="135"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="154" TopLine="135"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="155" TopLine="135"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="156" TopLine="135"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="157" TopLine="135"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="158" TopLine="135"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="159" TopLine="135"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="160" TopLine="135"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="161" TopLine="135"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="168" TopLine="139"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="169" TopLine="140"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="171" TopLine="143"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="173" TopLine="145"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="174" TopLine="146"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="180" TopLine="152"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="181" TopLine="153"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="191" TopLine="174"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -338,6 +406,15 @@
     </RunParams>
   </ProjectSession>
   <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="productionserverconfig.pas"/>
+        <Line Value="111"/>
+      </Item>
+    </BreakPoints>
     <Watches>
       <Item>
         <Expression Value="AField"/>

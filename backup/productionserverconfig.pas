@@ -9,9 +9,9 @@ uses
 
 type
 
-  { TProductionServerConfgForm }
+  { TProductionServerConfigForm }
 
-  TProductionServerConfgForm = class(TForm)
+  TProductionServerConfigForm = class(TForm)
     Button1: TButton;
     Button2: TButton;
     EditDatabase: TEdit;
@@ -23,6 +23,7 @@ type
     Label3: TLabel;
     Label4: TLabel;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -33,24 +34,24 @@ type
   end;
 
 var
-  ProductionServerConfgForm: TProductionServerConfgForm;
+  ProductionServerConfigForm: TProductionServerConfigForm;
 
 implementation
 uses
-  MainForm
+  MainForm;
 
 {$R *.lfm}
 
-{ TProductionServerConfgForm }
+{ TProductionServerConfigForm }
 
-procedure TProductionServerConfgForm.FormShow(Sender: TObject);
+procedure TProductionServerConfigForm.FormShow(Sender: TObject);
   var
     JSONData: TJSONData;
     JSONObject: TJSONObject;
     JSONParser: TJSONParser;
     FileStream: TFileStream;
   begin
-  if not FileExists(MainApplicationForm.exeDir + 'prod.json') then
+  if not FileExists(MainApplicationForm.exeDir + 'configs/prod.json') then
   begin
     ShowMessage('prod.json not found!  Enter your credentials and close form to create.');
     Exit;
@@ -84,23 +85,20 @@ procedure TProductionServerConfgForm.FormShow(Sender: TObject);
 
 end;
 
-procedure TProductionServerConfgForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TProductionServerConfigForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
   var
-     JSONObject: TJSONObject;
-     JSONString: TStringList;
-  begin
+    JSONObject: TJSONObject;
+    JSONString: TStringList;
+begin
   JSONObject := TJSONObject.Create;
   try
-    // Gather values from the edit controls
     JSONObject.Add('ServerName', EditServerName.Text);
     JSONObject.Add('UserName',   EditUserName.Text);
     JSONObject.Add('Password',   EditPassword.Text);
     JSONObject.Add('Database',   EditDatabase.Text);
-
-    // Convert JSON object to a string and save to file
     JSONString := TStringList.Create;
     try
-      JSONString.Text := JSONObject.FormatJSON();  // Nicely formatted JSON
+      JSONString.Text := JSONObject.FormatJSON();
       JSONString.SaveToFile(MainApplicationForm.exeDir + 'configs/prod.json');
     finally
       JSONString.Free;
@@ -108,22 +106,40 @@ procedure TProductionServerConfgForm.FormClose(Sender: TObject; var CloseAction:
   finally
     JSONObject.Free;
   end;
-  DataModule.DataModule1.MySQL80Connection1.Connected := false;
-  DataModule.DataModule1.MySQL80Connection1.HostName := EditServerName.Text;
-  DataModule.DataModule1.MySQL80Connection1.DatabaseName := EditDatabase.Text;
-  DataModule.DataModule1.MySQL80Connection1.UserName := EditUserName.Text;
-  DataModule.DataModule1.MySQL80Connection1.Password := EditPassword.Text;
-  DataModule.DataModule1.MySQL80Connection1.Connected := true;
 end;
 
-procedure TProductionServerConfgForm.FormCreate(Sender: TObject);
+
+procedure TProductionServerConfigForm.FormCreate(Sender: TObject);
 begin
 
 end;
 
-procedure TProductionServerConfgForm.Button1Click(Sender: TObject);
+procedure TProductionServerConfigForm.Button1Click(Sender: TObject);
+  var
+    MyColor: TColor;
+  begin
+    DataModule.DataModule1.MainConnection.Connected := false;
+    DataModule.DataModule1.MainConnection.HostName := EditServerName.Text;
+    DataModule.DataModule1.MainConnection.DatabaseName := EditDatabase.Text;
+    DataModule.DataModule1.MainConnection.UserName := EditUserName.Text;
+    DataModule.DataModule1.MainConnection.Password := EditPassword.Text;
+
+    try
+      DataModule.DataModule1.MainConnection.Connected := true;
+      MainApplicationForm.DBConnectionText.Caption := 'Connected To Production';
+      MyColor := clLime;
+      MainApplicationForm.ConnectionIndicator.Brush.Color := MyColor;
+    except
+      on E: Exception do
+        ShowMessage('Error: ' + E.Message);
+    end;
+
+    ProductionServerConfigForm.Close;
+end;
+
+procedure TProductionServerConfigForm.Button2Click(Sender: TObject);
 begin
-  ProductionServerConfgForm.Close;
+    ProductionServerConfigForm.Close
 end;
 
 end.

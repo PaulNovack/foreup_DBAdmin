@@ -5,7 +5,8 @@ unit DevServerConfig;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fpjson, jsonparser,DataModule;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fpjson
+  , jsonparser,DataModule,System.UITypes;
 
 type
 
@@ -37,10 +38,11 @@ var
 
 implementation
 
+
 {$R *.lfm}
 
 uses
-  MainForm
+  MainForm;
 
 { TDevelopmentServerConfigForm }
 
@@ -54,16 +56,13 @@ procedure TDevelopmentServerConfigForm.FormClose(Sender: TObject; var CloseActio
   begin
   JSONObject := TJSONObject.Create;
   try
-    // Gather values from the edit controls
     JSONObject.Add('ServerName', EditServerName.Text);
     JSONObject.Add('UserName',   EditUserName.Text);
     JSONObject.Add('Password',   EditPassword.Text);
     JSONObject.Add('Database',   EditDatabase.Text);
-
-    // Convert JSON object to a string and save to file
     JSONString := TStringList.Create;
     try
-      JSONString.Text := JSONObject.FormatJSON();  // Nicely formatted JSON
+      JSONString.Text := JSONObject.FormatJSON();
       JSONString.SaveToFile(MainApplicationForm.exeDir + 'configs/dev.json');
     finally
       JSONString.Free;
@@ -75,13 +74,23 @@ procedure TDevelopmentServerConfigForm.FormClose(Sender: TObject; var CloseActio
 end;
 
 procedure TDevelopmentServerConfigForm.Button1Click(Sender: TObject);
+var
+  MyColor: TColor;
 begin
-  DataModule.DataModule1.MySQL80Connection1.Connected := false;
-  DataModule.DataModule1.MySQL80Connection1.HostName := EditServerName.Text;
-  DataModule.DataModule1.MySQL80Connection1.DatabaseName := EditDatabase.Text;
-  DataModule.DataModule1.MySQL80Connection1.UserName := EditUserName.Text;
-  DataModule.DataModule1.MySQL80Connection1.Password := EditPassword.Text;
-  DataModule.DataModule1.MySQL80Connection1.Connected := true;
+  DataModule.DataModule1.MainConnection.Connected := false;
+  DataModule.DataModule1.MainConnection.HostName := EditServerName.Text;
+  DataModule.DataModule1.MainConnection.DatabaseName := EditDatabase.Text;
+  DataModule.DataModule1.MainConnection.UserName := EditUserName.Text;
+  DataModule.DataModule1.MainConnection.Password := EditPassword.Text;
+  try
+    DataModule.DataModule1.MainConnection.Connected := true;
+    MainApplicationForm.DBConnectionText.Caption := 'Connected To Development';
+    MyColor := clLime;
+    MainApplicationForm.ConnectionIndicator.Brush.Color := MyColor;
+  except
+    on E: Exception do
+      ShowMessage('Error: ' + E.Message);
+  end;
   DevelopmentServerConfigForm.Close;
 end;
 
@@ -103,19 +112,13 @@ begin
     ShowMessage('dev.json not found! Enter your credentials and close form to save.');
     Exit;
   end;
-
-  // Create a file stream and parser
   FileStream := TFileStream.Create(MainApplicationForm.exeDir + 'configs/dev.json', fmOpenRead or fmShareDenyNone);
   try
     JSONParser := TJSONParser.Create(FileStream);
     try
-      // Parse the file into a TJSONData object
       JSONData := JSONParser.Parse;
       try
-        // Cast to TJSONObject
         JSONObject := JSONData as TJSONObject;
-
-        // Retrieve values from the JSON object
         EditServerName.Text := JSONObject.Get('ServerName', '');
         EditUserName.Text := JSONObject.Get('UserName', '');
         EditPassword.Text := JSONObject.Get('Password', '');

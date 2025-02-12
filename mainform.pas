@@ -21,10 +21,9 @@ type
   TMainApplicationForm = class(TForm)
 
 
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
+    ExecuteQueryButton: TButton;
+    ShowTablesButton: TButton;
+    DBConnectionText: TLabel;
     QueryNameEdit: TEdit;
     QueryNameLabel: TLabel;
     SelectButton: TButton;
@@ -57,12 +56,13 @@ type
     Memo8: TMemo;
     Memo9: TMemo;
     MenuItem2: TMenuItem;
-    MenuItem3: TMenuItem;
-    MenuItem4: TMenuItem;
+    DevelopmentServerMenuItem: TMenuItem;
+    ProductionServerMenuItem: TMenuItem;
     MenuSaveRepeatable: TMenuItem;
     MenuItem6: TMenuItem;
     PageControl1: TPageControl;
     Panel1: TPanel;
+    ConnectionIndicator: TShape;
     Splitter1: TSplitter;
     Splitter10: TSplitter;
     Splitter11: TSplitter;
@@ -88,11 +88,12 @@ type
     TS9: TTabSheet;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
+    procedure ExecuteQueryButtonClick(Sender: TObject);
+    procedure ShowTablesButtonClick(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure CancelSaveQueryButtonChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure DBConnectionTextClick(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
     procedure SaveQueryButtonChange(Sender: TObject);
@@ -102,8 +103,8 @@ type
     procedure Button8Click(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
-    procedure MenuItem3Click(Sender: TObject);
-    procedure MenuItem4Click(Sender: TObject);
+    procedure DevelopmentServerMenuItemClick(Sender: TObject);
+    procedure ProductionServerMenuItemClick(Sender: TObject);
     procedure MenuSaveRepeatableClick(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
     procedure RemoveLinesStartingWithLimit(AMemo: TMemo);
@@ -134,13 +135,12 @@ end;
 
 procedure TMainApplicationForm.Button2Click(Sender: TObject);
 begin
-  ProductionServerConfgForm.Show;
+  ProductionServerConfigForm.Show;
 end;
 
-procedure TMainApplicationForm.Button3Click(Sender: TObject);
+procedure TMainApplicationForm.ExecuteQueryButtonClick(Sender: TObject);
 var
   activeTab: Integer;
-  myString: String;
   dbGridColumns: Integer;
   Query: String;
   i: Integer;
@@ -148,6 +148,7 @@ var
   thisMemo: TMemo;
   thisDBGrid: TDBGrid;
   SL: TStringList;
+  FirstWord: string;
 begin
   activeTab := PageControl1.ActivePageIndex;
   activeTab := activeTab + 1;
@@ -156,16 +157,29 @@ begin
   thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
   thisDbGrid := TDBGrid(FindComponent('DBGrid' + IntToStr(activeTab)));
   MainApplicationForm.RemoveLinesStartingWithLimit(thisMemo);
-  if LimitCheckBox.Checked then
+  FirstWord := Trim(Copy(thisMemo.Text, 1, 6));
+  if AnsiSameText(FirstWord,'SELECT') then
   begin
-     thisMemo.Text := thisMemo.Text + 'Limit 0,' + LimitNumberComboBox.Text;
+    if LimitCheckBox.Checked then
+    begin
+       thisMemo.Text := thisMemo.Text + 'Limit 0,' + LimitNumberComboBox.Text;
+    end;
   end;
   Query := thisMemo.Text;
   StringReplace(Query, ':courseId', CourseIdEdit.Text,
                                     [rfReplaceAll, rfIgnoreCase]);
   thisQ.SQL.Text := Query;
+
   try
-     thisQ.Active := true;
+      if AnsiSameText(FirstWord,'SELECT') then
+      begin
+        thisQ.Active := true;
+      end
+      else
+      begin
+        thisQ.ExecSQL;
+        ShowMessage('Rows affected: ' + IntToStr(thisQ.RowsAffected));
+      end;
   except
       on E: Exception do
       begin
@@ -199,7 +213,7 @@ begin
   aText := Sender.AsString;
 end;
 
-procedure TMainApplicationForm.Button4Click(Sender: TObject);
+procedure TMainApplicationForm.ShowTablesButtonClick(Sender: TObject);
 var
   ChildForm : TForm;
   userChoice: TModalResult;
@@ -208,7 +222,7 @@ var
 begin
   activeTab := PageControl1.ActivePageIndex;
   activeTab := activeTab + 1;
-  DataModule.DataModule1.SchemaConn.Connected:= true;
+  DataModule.DataModule1.MainConnection.Connected:= true;
   DataModule.DataModule1.SchemaQ.Active:= true;
   userChoice := ListTablesForm.ShowModal;
   thisMemo := TMemo(FindComponent('Memo' + IntToStr(activeTab)));
@@ -235,7 +249,13 @@ var
   qFilename: string;
   memoControl: TMemo;
 begin
-   exeDir := ExpandFileName(ExtractFilePath(ParamStr(0)) + '../../../');
+  {$IFDEF DARWIN}
+  exeDir := ExpandFileName(ExtractFilePath(ParamStr(0)) + '../../../');
+  {$ENDIF}
+  {$IFDEF LINUX}
+  exeDir := ExpandFileName(ExtractFilePath(ParamStr(0));
+  {$ENDIF}
+
   for i := 1 to 10 do
   begin
     qFilename := exeDir + 'queries/Query' + IntToStr(i) + '.sql';
@@ -250,6 +270,11 @@ begin
         ShowMessage('Component Memo' + IntToStr(i) + ' not found.');
     end;
   end;
+end;
+
+procedure TMainApplicationForm.DBConnectionTextClick(Sender: TObject);
+begin
+
 end;
 
 procedure TMainApplicationForm.PageControl1Change(Sender: TObject);
@@ -352,14 +377,14 @@ begin
 
 end;
 
-procedure TMainApplicationForm.MenuItem3Click(Sender: TObject);
+procedure TMainApplicationForm.DevelopmentServerMenuItemClick(Sender: TObject);
 begin
   DevelopmentServerConfigForm.Show;
 end;
 
-procedure TMainApplicationForm.MenuItem4Click(Sender: TObject);
+procedure TMainApplicationForm.ProductionServerMenuItemClick(Sender: TObject);
 begin
-  ProductionServerConfgForm.Show;
+  ProductionServerConfigForm.Show;
 end;
 
 procedure TMainApplicationForm.MenuSaveRepeatableClick(Sender: TObject);
@@ -373,9 +398,6 @@ begin
   SaveQueryButton.Visible := true;
   CancelSaveQueryButton.visible := true;
   QueryNameLabel.Visible := true;
-
-
-
 end;
 
 procedure TMainApplicationForm.MenuItem6Click(Sender: TObject);

@@ -13,9 +13,6 @@
       </XPManifest>
       <Icon Value="0"/>
     </General>
-    <MacroValues Count="1">
-      <Macro1 Name="LCLWidgetType" Value="cocoa"/>
-    </MacroValues>
     <BuildModes>
       <Item Name="Default" Default="True"/>
     </BuildModes>
@@ -61,7 +58,7 @@
       <Unit>
         <Filename Value="productionserverconfig.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="ProductionServerConfgForm"/>
+        <ComponentName Value="ProductionServerConfigForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ProductionServerConfig"/>
