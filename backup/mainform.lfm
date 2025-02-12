@@ -1,7 +1,7 @@
 object MainApplicationForm: TMainApplicationForm
-  Left = 1659
+  Left = 1809
   Height = 813
-  Top = 171
+  Top = 239
   Width = 1623
   Caption = 'ForeUp Database Application'
   ClientHeight = 813

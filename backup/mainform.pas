@@ -171,14 +171,22 @@ begin
        thisMemo.Text := thisMemo.Text + 'Limit 0,' + LimitNumberComboBox.Text;
     end;
   end;
+
+  if DataModule1.SQLTransaction1.Active then
+    DataModule1.SQLTransaction1.CommitRetaining;
+
+
   Query := thisMemo.Text;
-  StringReplace(Query, ':courseId', CourseIdEdit.Text,
+  Query := StringReplace(Query, ':courseId', CourseIdEdit.Text,
                                     [rfReplaceAll, rfIgnoreCase]);
-  thisQ.SQL.Text := Query;
+
 
   try
       if AnsiSameText(FirstWord,'SELECT') then
       begin
+        thisQ.SQL.Text := 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;';
+        thisQ.ExecSQL;
+        thisQ.SQL.Text := Query;
         thisQ.Active := true;
       end
       else
