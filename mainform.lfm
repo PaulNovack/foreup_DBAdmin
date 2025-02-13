@@ -21,16 +21,17 @@ object MainApplicationForm: TMainApplicationForm
     Height = 677
     Top = 136
     Width = 1623
-    ActivePage = TS9
+    ActivePage = TS1
     Align = alBottom
     Anchors = [akTop, akLeft, akRight, akBottom]
-    TabIndex = 8
+    TabIndex = 0
     TabOrder = 0
     OnChange = PageControl1Change
     object TS1: TTabSheet
       Caption = 'Query 1'
       ClientHeight = 641
       ClientWidth = 1617
+      OnContextPopup = TS1ContextPopup
       object Memo1: TMemo
         AnchorSideLeft.Control = TS1
         AnchorSideTop.Control = TS1

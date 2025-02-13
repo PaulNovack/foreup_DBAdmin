@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   Menus, ExtCtrls,DB, DBGrids, Buttons, DevServerConfig, ProductionServerConfig,
-  DataModule,ListTables,loadSqlStatements,fpjson, jsonparser,SQLdb;
+  DataModule,ListTables,loadSqlStatements,fpjson, jsonparser,SQLdb, Types;
 
 type
   // A small record to hold each query's data
@@ -112,6 +112,8 @@ type
     procedure ApplyDateTimeDisplayFormats;
     procedure MemoFieldGetText(Sender: TField; var aText: string; DisplayText: Boolean);
     function AddQueryToFile(const AFileName, AQueryName, ASQL: string): Boolean;
+    procedure TS1ContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
 
   private
     FQueries: array of TQueryInfo;
@@ -182,25 +184,31 @@ begin
 
 
   try
-      if AnsiSameText(FirstWord,'SELECT') then
+    if AnsiSameText(FirstWord,'SELECT') then
+    begin
+      if DataModule1.SQLTransaction1.Active then
       begin
-        thisQ.SQL.Text := 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;';
-        thisQ.ExecSQL;
-        thisQ.SQL.Text := Query;
-        thisQ.Active := true;
-      end
-      else
-      begin
-        thisQ.SQL.Text := Query;
-        thisQ.ExecSQL;
-        ShowMessage('Rows affected: ' + IntToStr(thisQ.RowsAffected));
+        DataModule1.SQLTransaction1.Commit;
+        DataModule1.SQLTransaction1.Active := false;
+        DataModule1.SQLTransaction1.Active := true;
       end;
+      thisQ.Active := false;
+      thisQ.SQL.Text := Query;
+      thisQ.Active := true;
+    end
+    else
+    begin
+      thisQ.SQL.Text := Query;
+      thisQ.ExecSQL;
+      DataModule1.SQLTransaction1.Commit;
+      ShowMessage('Rows affected: ' + IntToStr(thisQ.RowsAffected));
+    end;
   except
-      on E: Exception do
-      begin
-        ShowMessage('SQL Error: ' + E.Message);
-        Exit;
-      end;
+    on E: Exception do
+    begin
+      ShowMessage('SQL Error: ' + E.Message);
+      Exit;
+    end;
   end;
 
   for i := 0 to thisQ.FieldCount - 1 do
@@ -543,6 +551,12 @@ begin
       JSONParser.Free;
       NEWJSONARRAY.Free;
     end;
+end;
+
+procedure TMainApplicationForm.TS1ContextPopup(Sender: TObject;
+  MousePos: TPoint; var Handled: Boolean);
+begin
+
 end;
 
 procedure TMainApplicationForm.ApplyDateTimeDisplayFormats;

@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   Menus, ExtCtrls,DB, DBGrids, Buttons, DevServerConfig, ProductionServerConfig,
-  DataModule,ListTables,loadSqlStatements,fpjson, jsonparser,SQLdb;
+  DataModule,ListTables,loadSqlStatements,fpjson, jsonparser,SQLdb, Types;
 
 type
   // A small record to hold each query's data
@@ -112,6 +112,8 @@ type
     procedure ApplyDateTimeDisplayFormats;
     procedure MemoFieldGetText(Sender: TField; var aText: string; DisplayText: Boolean);
     function AddQueryToFile(const AFileName, AQueryName, ASQL: string): Boolean;
+    procedure TS1ContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
 
   private
     FQueries: array of TQueryInfo;
@@ -182,16 +184,25 @@ begin
 
 
   try
+
+      DataModule1.SQLConnection1.Open;
       if AnsiSameText(FirstWord,'SELECT') then
       begin
-        thisQ.SQL.Text := 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;';
-        thisQ.ExecSQL;
+        if DataModule1.SQLTransaction1.Active then
+        begin
+          DataModule1.SQLTransaction1.Commit;
+          DataModule1.SQLTransaction1.Active := false;
+          DataModule1.SQLTransaction1.Active := true;
+        end;
+        thisQ.Active := false;
         thisQ.SQL.Text := Query;
         thisQ.Active := true;
       end
       else
       begin
+        thisQ.SQL.Text := Query;
         thisQ.ExecSQL;
+        DataModule1.SQLTransaction1.Commit;
         ShowMessage('Rows affected: ' + IntToStr(thisQ.RowsAffected));
       end;
   except
@@ -542,6 +553,12 @@ begin
       JSONParser.Free;
       NEWJSONARRAY.Free;
     end;
+end;
+
+procedure TMainApplicationForm.TS1ContextPopup(Sender: TObject;
+  MousePos: TPoint; var Handled: Boolean);
+begin
+
 end;
 
 procedure TMainApplicationForm.ApplyDateTimeDisplayFormats;
